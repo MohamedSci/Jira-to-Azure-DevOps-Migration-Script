@@ -1,2 +1,10 @@
-.venv/
-.venv\
+__pycache__/
+input/
+output/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+venv/

@@ -69,11 +69,37 @@ A **robust and efficient Python script** to migrate issues from Jira to Azure De
 
 ---
 
+## Project Strucure
+
+jira-to-azure-devops-migration/
+├── src/
+│   ├── __init__.py
+│   ├── data_processor.py
+│   ├── file_handler.py
+│   ├── logger.py
+│   ├── migration.py
+│   └── utils.py
+├── input/
+│   ├── default_fields.csv
+│   └── all_fields.csv
+├── output/
+│   └── azure_output.csv
+├── index.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+---
+
 ## Usage 🚀
 
 1. Run the script:
    ```bash
-   python migrate.py
+   pip install -r requirements.txt
+   ```
+
+   ```bash
+   python index.py
    ```
 
 2. Check the output file (`azure_output.csv`) in the `new_convert-jira-to-devops` directory.
