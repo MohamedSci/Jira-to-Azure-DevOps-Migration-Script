@@ -17,11 +17,11 @@ JIRA_BASE_URL = "https://microtec.atlassian.net/browse/"
 
 # Priority Mapping: Jira → Azure DevOps
 PRIORITY_MAPPING = {
-    "Lowest": "1",
-    "Low": "1",
-    "Medium": "2",
-    "High": "3",
-    "Highest": "4"
+    "Lowest": "4",
+    "Low": "4",
+    "Medium": "3",
+    "High": "2",
+    "Highest": "1"
 }
 
 # Function to detect file encoding
@@ -60,9 +60,17 @@ def extract_attachment_urls(attachment_cell):
     if not attachment_cell:
         return []
 
-    # Match URLs starting with https:// and ending with a space or end of string
-    url_regex = r"https://[^\s]+"
-    return re.findall(url_regex, attachment_cell)
+    # Log the raw attachment cell for debugging
+    logging.debug(f"Raw attachment cell: {attachment_cell}")
+
+    # Match URLs starting with https:// and ending with a space, semicolon, or end of string
+    url_regex = r"https://[^\s;]+"
+    urls = re.findall(url_regex, attachment_cell)
+
+    # Log the extracted URLs for debugging
+    logging.debug(f"Extracted URLs: {urls}")
+
+    return urls
 
 # Function to process all_fields.csv
 def process_all_fields():
