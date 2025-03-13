@@ -18,7 +18,9 @@ def process_all_fields(all_fields_data):
         if not issue_key:
             continue
 
+        # Extract attachments
         attachment_urls = extract_attachment_urls(row.get("Attachment", ""))
+
         processed_data[issue_key] = {
             "Description": clean_jira_description(row.get("Description", "")),
             "Environment": row.get("Environment", "Not Provided"),

@@ -23,9 +23,13 @@ def format_to_iso8601(date_string):
         logging.warning(f"Invalid date format: {date_string}")
         return ""
 
+
 def extract_attachment_urls(attachment_cell):
     if not attachment_cell:
         return []
 
-    url_regex = r"https://[^\s;]+"
-    return re.findall(url_regex, attachment_cell)
+    logging.debug(f"Raw attachment cell: {attachment_cell}")
+    parts = attachment_cell.split(";")
+    urls = [part.strip() for part in parts if part.strip().startswith("https://")]
+    logging.debug(f"Extracted URLs: {urls}")
+    return urls
