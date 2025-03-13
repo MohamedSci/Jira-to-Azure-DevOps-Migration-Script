@@ -1,7 +1,9 @@
+---
+
 # Jira to Azure DevOps Migration Script 🚀
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-Apache%202.0-green)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 
 A **robust and efficient Python script** to migrate issues from Jira to Azure DevOps, ensuring **data integrity**, **formatting consistency**, and **seamless integration**. This script automates the migration process, saving time and effort for teams transitioning between platforms.
@@ -12,11 +14,12 @@ A **robust and efficient Python script** to migrate issues from Jira to Azure De
 
 1. [Features](#features)
 2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Output](#output)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Support](#support)
+3. [Project Structure](#project-structure)
+4. [Usage](#usage)
+5. [Output](#output)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Support](#support)
 
 ---
 
@@ -28,7 +31,7 @@ A **robust and efficient Python script** to migrate issues from Jira to Azure De
 - Ensures all rows are processed without loss of information.
 
 ### Priority Mapping
-- Translates Jira priorities (`Lowest`, `Low`, `Medium`, `High`, `Highest`) to Azure DevOps priority levels (`1`, `2`, `3`, `4`).
+- Translates Jira priorities (`Lowest`, `Low`, `Medium`, `High`, `Highest`) to Azure DevOps priority levels (`4`, `3`, `2`, `1`).
 
 ### Attachment Extraction & Processing
 - Dynamically detects all attachment columns in the source CSV file.
@@ -51,58 +54,58 @@ A **robust and efficient Python script** to migrate issues from Jira to Azure De
 
 ### Prerequisites
 - Python 3.8 or higher.
-- Required Python libraries: `chardet`, `csv`, `re`, `datetime`, `logging`.
+- Required Python libraries: `chardet`.
 
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/jira-to-azure-devops-migration.git
-   cd jira-to-azure-devops-migration
+   git clone https://github.com/MohamedSci/Jira-to-Azure-DevOps-Migration-Script.git
+   cd Jira-to-Azure-DevOps-Migration-Script
    ```
 
 2. Install dependencies:
    ```bash
-   pip install chardet
+   pip install -r requirements.txt
    ```
 
-3. Place your input files (`default_fields.csv` and `all_fields.csv`) in the `new_convert-jira-to-devops` directory.
+3. Place your input files (`default_fields.csv` and `all_fields.csv`) in the `input` directory.
 
 ---
 
-## Project Strucure
+## Project Structure 🗂️
 
+```
 jira-to-azure-devops-migration/
 ├── src/
 │   ├── __init__.py
-│   ├── data_processor.py
-│   ├── file_handler.py
-│   ├── logger.py
-│   ├── migration.py
-│   └── utils.py
+│   ├── data_processor.py       # Processes and transforms data
+│   ├── file_handler.py         # Handles file I/O operations
+│   ├── logger.py               # Configures logging
+│   ├── migration.py            # Orchestrates the migration process
+│   └── utils.py                # Utility functions (e.g., cleaning descriptions)
 ├── input/
-│   ├── default_fields.csv
-│   └── all_fields.csv
+│   ├── default_fields.csv      # CSV with default fields
+│   └── all_fields.csv          # CSV with all fields (including attachments)
 ├── output/
-│   └── azure_output.csv
-├── index.py
-├── requirements.txt
-├── README.md
-└── .gitignore
+│   └── azure_output.csv        # Generated output file
+├── index.py                    # Entry point for the script
+├── requirements.txt            # List of dependencies
+├── README.md                   # Project documentation
+└── .gitignore                  # Specifies files to ignore in Git
+```
 
 ---
 
 ## Usage 🚀
 
-1. Run the script:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Ensure your input files (`default_fields.csv` and `all_fields.csv`) are placed in the `input` folder.
 
+2. Run the script:
    ```bash
    python index.py
    ```
 
-2. Check the output file (`azure_output.csv`) in the `new_convert-jira-to-devops` directory.
+3. Check the output file (`azure_output.csv`) in the `output` folder.
 
 ### Example Input Files
 
@@ -159,7 +162,7 @@ This project is licensed under the **Apache 2.0 License**. See the [LICENSE](LIC
 
 For questions, issues, or feature requests, please:
 
-- Open an issue on [GitHub](https://github.com/MohamedSci/Jira-to-Azure-DevOps-Migration-Script.git).
+- Open an issue on [GitHub](https://github.com/MohamedSci/Jira-to-Azure-DevOps-Migration-Script/issues).
 - Email us at [muhammedsaidsyed215@gmail.com](mailto:muhammedsaidsyed215@gmail.com).
 
 ---
