@@ -1,0 +1,3131 @@
+Work Item Type,Title,Assigned To,Created By,Priority,State,Created Date,Changed Date,Description
+Bug,(SP25): Trial Balance Print Button Not Working,Maha Muhammed,Muhammed Saeed,2,To Do,2025-03-10T23:33:00.000Z,2025-03-10T23:33:00.000Z,"h4. *Title:*
+
+Trial Balance Print Button Does Not Function After Viewing the Report
+
+h4. *Description:*
+
+On the *Trial Balance Report* screen, after the user *inputs valid ""From"" and ""To"" dates* within the financial period and clicks the *View* button, the report is correctly displayed. However, when the user clicks the *Print* button, *no action occurs*the print preview does not open, and no error message is shown.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with access to the *Trial Balance Report* module.
+* A valid *financial period* exists.
+* The user enters a valid date range within the financial period.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Accounting App ? Reports ? Trial Balance*.
+# Input a valid *From Date* and *To Date* within the financial period.
+# Click the *View* button to generate the trial balance report.
+# Click the *Print* button.
+# Observe that *nothing happens*the print preview does not open.
+# Choose accounts have balance
+# Click the *View* button to generate the trial balance report.
+# Click the *Print* button.
+# Observe that *nothing happens*the print preview does not open.
+
+h4. *Expected Result:*
+
+* Clicking the *Print* button should open the print preview for the *Trial Balance Report*.
+* If an issue prevents printing, the system should display an *informative error message* instead of failing silently.
+
+h4. *Actual Result:*
+
+* Clicking the *Print* button does *not trigger any action*.
+* No error message is displayed, making it unclear whether the issue is due to a system error or missing data."
+Bug,"Stock Transfer Allowed with Same Warehouse in ""From"" and ""To"" Fields",Mohamed Hammad,Tassneem fathi,2,To Do,2025-03-09T14:13:00.000Z,2025-03-09T14:13:00.000Z,"*Description:*
+When creating a stock transfer, selecting the same warehouse in both the ""From"" and ""To"" fields should trigger an error message. However, the system allows the process to be saved successfully.
+
+*Steps to Reproduce:*
+
+* Navigate to the *Stock Transfer* screen.
+* Click on *Create New Stock Transfer*.
+* Select the same warehouse in both the *From* and *To* fields.
+* Click on *Save*.
+
+*Expected Result:*
+An error message should appear indicating that the *From* and *To* warehouses must be different.
+
+*Actual Result:*
+The system allows the process to be saved successfully without any validation error."
+Bug,(SP24): Print Button Generates Empty Print View Without Informative Message,Maha Muhammed,Mohamed Said,3,To Do,2025-03-02T16:05:00.000Z,2025-03-02T16:06:00.000Z,"h4. *Title:*
+
+Print Button Generates Blank Print View When No Filters Are Applied
+
+h4. *Description:*
+
+On the *Payment Reconciliation Report* screen, when the user clicks the *Print* button without applying any filters or selecting a customer, the system *generates an empty print preview* instead of displaying a proper validation message. This can mislead users into thinking there is an issue with the report.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with access to the *Payment Reconciliation Report* module.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Finance Module ? Reports ? Payment Reconciliation Report*.
+# Do *not* apply any filters or select a customer.
+# Click the *Print* button.
+# Observe that an *empty print preview* is generated with no data.
+
+h4. *Expected Result:*
+
+* If no filters are applied and no data is available, the system should display an *informative message*, such as:
+_""No data available for printing. Please apply filters and try again.""_
+* The Print button should be *disabled* until valid data is available for printing.
+
+h4. *Actual Result:*
+
+* The system *generates an empty print preview* with no warning or validation message.
+
+h4. *Suggested Fix:*
+
+* Implement a *validation check* before generating the print view.
+* Display a *clear message* when no data is available.
+* Disable the *Print button* until at least one filter is applied or relevant data is retrieved.
+
+h4. *Severity:*
+
+?? *Medium*  This issue affects user experience and may cause confusion, leading to unnecessary troubleshooting."
+Bug,(Sp24): Duplicate Print Buttons in Payment Reconciliation Report,Abanoub Nabil,Muhammed Saeed,2,Testing,2025-03-02T16:01:00.000Z,2025-03-09T15:46:00.000Z,"h4. *Title:*
+
+Duplicate Print Buttons in Payment Reconciliation Report Perform the Same Action
+
+h4. *Description:*
+
+On the *Payment Reconciliation Report* screen, there are *two Print buttons*, both of which *navigate to the same print function* and execute the same action. This redundancy creates confusion for users and leads to unnecessary UI clutter.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with access to the *Payment Reconciliation Report* module.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Finance Module ? Reports ? Payment Reconciliation Report*.
+# Observe that there are *two Print buttons* on the screen.
+# Click the first *Print* button and note that it generates the reconciliation report print preview.
+# Click the second *Print* button and observe that it performs the *exact same action* as the first one.
+
+h4. *Expected Result:*
+
+* There should be *only one Print button* to avoid redundancy.
+* If multiple print options are needed (e.g., *detailed vs. summary reports*), they should be *clearly labeled* to indicate their function.
+
+h4. *Actual Result:*
+
+* There are *two identical Print buttons*, both triggering the *same print action*.
+* This creates *UI confusion* and *unnecessary duplication*.
+
+h4. *Suggested Fix:*
+
+* Remove the *duplicate Print button*.
+* If different print functionalities are needed, label them clearly (e.g., *Print Detailed Report* vs. *Print Summary Report*).
+* Conduct a UI review to ensure no similar redundancies exist in other modules.
+
+h4. *Severity:*
+
+?? *Medium*  While this issue does not impact functionality, it leads to UI confusion and unnecessary redundancy."
+Bug,(SP24): Payment Reconciliation Report Does Not Display Reconciled Invoices for Selected Customer,Mohamed Fathy,Muhammed Saeed,1,To Do,2025-03-02T15:51:00.000Z,2025-03-03T14:21:00.000Z,"h3. *Payment Reconciliation Report Does Not Display Reconciled Invoices for Selected Customer*
+
+h4. *Title:*
+
+Payment Reconciliation Report Fails to Display Reconciled Invoices and Shows Incorrect Invoice List
+
+h4. *Description:*
+
+On the *Payment Reconciliation Report* screen, when a user selects a customer, the report *does not display* the invoices that have been *successfully reconciled*. Instead, the *Select Invoice* dropdown incorrectly shows *only non-reconciled invoices*, preventing users from accessing reconciliation details. This issue affects financial reporting accuracy and reconciliation tracking.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with access to the *Payment Reconciliation Report* module.
+* At least one invoice has been successfully reconciled for the selected customer.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Finance Module ? Reports ? Payment Reconciliation Report*.
+# Select a *customer* who has reconciled invoices.
+# Open the *Select Invoice* dropdown.
+# Observe that the dropdown *only lists non-reconciled invoices* instead of displaying reconciled ones.
+# Attempt to generate a reconciliation report and notice that *no data appears* for reconciled invoices.
+
+h4. *Expected Result:*
+
+* The *Select Invoice* dropdown should display *both fully and partially reconciled invoices* for the selected customer.
+* The report should correctly show *reconciliation details*, including *invoice status, reconciled amount, and remaining balance*.
+
+h4. *Actual Result:*
+
+* The dropdown incorrectly lists only *non-reconciled invoices*, preventing users from selecting reconciled invoices.
+* The report does not show *any data* for reconciled invoices.
+
+h4. *Suggested Fix:*
+
+* Modify the query logic to *include reconciled invoices* in the *Select Invoice* dropdown.
+* Ensure that the *report correctly fetches and displays* reconciliation details.
+* Validate that the system retrieves *both fully and partially reconciled invoices* for the selected customer.
+
+h4. *Severity:*
+
+?? *High*  This issue impacts financial reporting and reconciliation tracking, leading to incorrect financial records."
+Bug,"(SP:24):Treasury Definition Add Screen, Clicking The Save Button More Than Once, Leads To Save The Same Treasury More Than Once.",Muhammed Nabil,Yassmin,3,Code review,2025-03-02T15:43:00.000Z,2025-03-05T12:37:00.000Z,
+Bug,"(SP:24):Chart Of Account Edit Screen, The Account Type Can be Changed When The Account Has Transaction.",Nader Moustafa,Yassmin,3,In Progress,2025-03-02T15:04:00.000Z,2025-03-04T10:29:00.000Z,"When the account has transactions and I want to change the account type,
+
+*Expected Result:* The Account Type Can be Changed When The Account Has Transaction.
+
+*Actual Result:* The account type didnt change because it has transactions."
+Bug,(Sp24): Amount Field in Add Payment In Screen Accepts Negative Numbers Without Validation,Muhammed Nabil,Muhammed Saeed,1,Code review,2025-03-02T13:15:00.000Z,2025-03-05T12:41:00.000Z,"h4. *Title:*
+
+Negative Amounts Can Be Entered and Saved in Payment In Screen Without Validation
+
+h4. *Description:*
+
+On the *Add Payment In* screen, the *Amount* field in the *Detail Section* allows users to enter negative values. The system successfully *saves and posts* the transaction without any validation or error message. This issue leads to severe inconsistencies in *financial calculations, reconciliation, and related module transactions*, affecting overall system accuracy.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with permission to create and post *Payment In* transactions.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Finance Module ? Transactions ? Add Payment In* screen.
+# In the *Detail Section*, enter a *negative amount* (e.g., {{-1000}}).
+# Click *Save*, then *Post* the transaction.
+# Observe that the system allows the transaction to be saved and posted without validation.
+# Check the related financial reports, reconciliation, and transaction history to see discrepancies.
+
+h4. *Expected Result:*
+
+* The system should *not allow* negative values in the *Amount* field.
+* If a negative value is entered, an *error message* should be displayed, preventing the user from saving or posting the transaction.
+* Proper validation should be enforced to ensure only positive values are accepted.
+
+h4. *Actual Result:*
+
+* The system allows negative amounts in the *Amount* field.
+* The transaction is successfully saved and posted without any validation.
+* This leads to financial calculation errors in *balancing, reconciliation, and other dependent modules*.
+
+h4. *Suggested Fix:*
+
+* Implement *validation* to restrict negative values in the *Amount* field.
+* Display a clear *error message* when a negative value is entered.
+* Prevent transactions with negative amounts from being saved or posted.
+* Conduct a *system-wide audit* to check if similar validation issues exist in other financial modules.
+
+h4. *Severity:*
+
+?? *Critical*  This issue impacts financial accuracy, reconciliation, and balance calculations, leading to serious financial discrepancies."
+Bug,"(SP:24): Fund Transfer Add, Edit & View Screens, The ""Send To"" Word Should be ""Receive To""",Esraa,Yassmin,3,To Do,2025-03-02T13:11:00.000Z,2025-03-04T13:30:00.000Z,
+Bug,"(SP:24): Fund Transfer Add Screen, Missing Error Message When Post Button Doesn't Work Without Selecting Fund Transfer Contra Account.",Esraa,Yassmin,3,To Do,2025-03-02T12:29:00.000Z,2025-03-06T11:21:00.000Z,"When I click the post button without selecting the Fund Transfer Contra Account from the general setting screen in finance module,
+
+*Expected Result:* The error message should appear as Failed To Post, Please Set The Fund Transfer Contra Account Form General Setting Screen
+
+*Actual Result:* The error message didnt appear."
+Bug,"(SP:24): Fund Transfer Screens, The Design of fund Transfer Screens Should be Improved.",Abanoub Nabil,Yassmin,3,To Do,2025-03-02T12:16:00.000Z,2025-03-04T10:12:00.000Z,
+Bug,"(SP:24):Fund Transfer List View & View Screens, The links of Payment In & Payment Out Should Open in New Tab.",Mohamed Fathy,Yassmin,3,To Do,2025-03-02T12:07:00.000Z,2025-03-02T12:11:00.000Z,"When I click on the payment in or payment out link,
+
+*Expected Result:* The related link screen should open in new tab.
+
+*Actual Result:* The related link screen open in the same tab."
+Bug,"(SP:24):Fund Transfer View Screen, The Bank Account Not Visible.",Mohamed Fathy,Yassmin,3,To Do,2025-03-02T12:00:00.000Z,2025-03-09T13:48:00.000Z,"*Expected Result:* The bank account should be visible in view screen.
+
+*Actual Result:* The bank account not visible in view screen."
+Bug,(SP24): Save Button Successfully Saves Reconciliation but Does Not Redirect or Reset the Screen,Ahmed Gamal,Muhammed Saeed,2,Code review,2025-02-27T14:24:00.000Z,2025-03-03T11:53:00.000Z,"h4. *Title:*
+
+Save Button Successfully Saves Reconciliation but Does Not Redirect or Reset the Screen
+
+h4. *Description:*
+
+On the *Payment Reconciliation* screen in the *Finance App*, after clicking the *Save* button, the reconciliation is successfully saved, and a *success popup* is displayed. However, the screen remains stuck, and all manipulated fields still retain the same data and state instead of refreshing or redirecting. This creates confusion for users as they are unsure whether the reconciliation has been processed correctly.
+
+h4. *Preconditions:*
+
+* The user is logged into the ERP system with access to the *Finance App*.
+* The user has navigated to *Finance Module ? Transactions ? Payment Reconciliation*.
+* A customer and a payment have been selected.
+* One or more invoices have been selected for reconciliation.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to *Finance Module ? Transactions ? Payment Reconciliation*.
+# Select a customer from the *Customer Selection* popup.
+# Select a payment from the *Payment Selection* popup.
+# Choose one or more invoices for reconciliation.
+# Click the *Reconcile* button to apply the payment.
+# Click the *Save* button.
+# Observe that the reconciliation is successfully saved, and a *success popup* appears.
+# Notice that the screen does not refresh or redirect, and the fields still show the same data.
+
+h4. *Expected Result:*
+
+* After successful reconciliation, the screen should either:
+** Redirect the user to the *Payment Reconciliation List* screen.
+** Refresh and reset the fields to their default state.
+* The previously reconciled invoices should no longer appear as pending reconciliation.
+* The UI should provide a *clear indication* that the process has been completed.
+
+h4. *Actual Result:*
+
+* The *Save* button successfully saves the reconciliation and displays a success popup.
+* The screen remains unchanged with all manipulated fields retaining the same data.
+* Users are unsure whether the reconciliation was actually processed.
+
+h4. *Suggested Fix:*
+
+* Implement a *screen refresh or redirection* after successful reconciliation.
+* Automatically *reset all fields* and update the invoice list to reflect the reconciliation.
+* Ensure that reconciled invoices are *removed from the pending list*.
+* Provide a clear confirmation message indicating that the process is complete and that no further action is required.
+
+h4. *Severity:*
+
+*Medium-High*  The issue does not prevent reconciliation but causes confusion and inefficiency for users."
+Bug,(SP21) @General: Search Functionality Sends Excessive Requests Due to Lack of Debouncing,Abanoub Nabil,Muhammed Saeed,2,To Do,2025-02-23T11:29:00.000Z,2025-02-23T12:21:00.000Z,"*Title:*
+Search Functionality Sends Excessive Requests Due to Lack of Debouncing
+
+----
+
+*Description:*
+The search functionality does not efficiently handle user input, causing an excessive number of requests to be sent to the server. Each time the user types a character, a request is immediately triggered, even if the time between keystrokes is less than one second. This can lead to server overload, performance issues, and unnecessary network traffic. Implementing *debouncing* should optimize the search behavior.
+
+----
+
+*Precondition:*
+
+* The ERP system is accessible, and the user has access to the search feature.
+
+----
+
+*Steps to Reproduce:*
+
+# Log in to the ERP system.
+# Navigate to a screen where the search functionality is available.
+# Start typing a search term letter by letter.
+# Observe that each keystroke triggers a request without waiting for a pause in typing.
+
+----
+
+*Expected Result:*
+
+* The search functionality should implement *debouncing*, meaning it waits for a short delay (e.g., 500800ms) after the user stops typing before sending a request.
+* This reduces unnecessary server requests and improves performance.
+
+----
+
+*Actual Result:*
+
+* A request is sent for every character typed, even if the delay between keystrokes is very short.
+* This causes excessive API calls, leading to increased server load and potential performance degradation.
+
+----
+
+*Suggested Fix:*
+
+* Implement *Debouncing* in the search functionality to delay API requests until the user has stopped typing for a defined period (e.g., 500800ms)."
+Bug,(SP21): Payment Confirmation Issue When Paying for Invoice Online,Mohamed Fathy,Muhammed Saeed,1,Testing,2025-02-20T14:15:00.000Z,2025-03-03T14:25:00.000Z,"*Title:*
+Payment Confirmation Issue When Paying for Invoice Online
+
+----
+
+*Description:*
+When a user attempts to pay for an invoice online, the payment confirmation process encounters an issue, preventing successful transaction completion. This may result in incorrect payment statuses, missing confirmations, or failed transactions.
+
+----
+
+*Precondition:*
+
+* The ERP system is accessible, and the user is logged in with permissions to make online payments.
+* An invoice is available for online payment.
+* A valid payment method is selected.
+
+----
+
+*Steps to Reproduce:*
+
+# Log in to the *Admin Portal* system.
+# Navigate to the *Invoices* section.
+# Click *Add New Invoice*
+# Fill all Required fields
+# Proceed with the payment process.
+# Complete the transaction and observe the confirmation process.
+
+----
+
+*Expected Result:*
+
+* After completing the payment, a confirmation message should be displayed.
+* The invoice status should update to ""Paid.""
+* The payment record should be properly stored in the system.
+
+----
+
+*Actual Result:*
+
+* The payment confirmation does not appear after completing the transaction.
+* The invoice status remains unchanged (e.g., still marked as ""Pending"").
+* The user is unsure if the payment was successful, leading to potential duplicate transactions."
+Bug,(SP21): Help Button Navigation Issues,Abanoub Nabil,Muhammed Saeed,2,To Do,2025-02-17T13:24:00.000Z,2025-02-17T14:50:00.000Z,"h3. *Bug Report: Help Button Navigation Issues*
+
+h4. *Issue Description:*
+
+When the user clicks the *Help* button on any screen, the system navigates to the Help Pages. However, the following issues occur:
+
+# *No Return to Previous Screen:* There is no option to return back to the previous screen from the Help Pages.
+# *Incorrect Back Navigation Behavior:* If the user manually navigates back, it returns to the parent-related Help Pages instead of the previous screen.
+# *Side Menu Displays Incorrect Options:* The side menu incorrectly displays *General Settings* module options instead of maintaining the context of the previously accessed screen.
+
+h4. *Steps to Reproduce:*
+
+# Navigate to any module or transaction screen (e.g., Sales Invoice, Purchase Order, etc.).
+# Click on the *Help* button.
+# Observe that the system navigates to the *Help Pages* instead of opening in a new tab.
+# Attempt to navigate back using the browser back button.
+# Notice that it does not return to the previous screen but instead loads parent-related help pages.
+# Observe the side menu displaying *General Settings* instead of the relevant module options.
+
+h4. *Expected Behavior:*
+
+* The Help Page should open in a *new window* or *new tab* instead of redirecting the user from the current screen.
+* If the Help Page is opened in the same window, a *clear return option* should be provided to navigate back to the previously accessed screen.
+* The side menu should remain consistent with the user's previously selected module / App, not default to General Settings.
+
+h4. *Actual Behavior:*
+
+* The system redirects the user away from their current work screen when they click the Help button.
+* There is no direct way to return to the screen where the user clicked the Help button.
+* The side menu shows *General Settings* options instead of the appropriate module.
+
+h4. *Impact:*
+
+* Interrupts user workflow as they lose their place in the system.
+* Causes confusion due to incorrect navigation and missing return functionality.
+* Leads to inefficiency since users have to manually navigate back to the intended module.
+
+h4. *Severity:* *Medium to High*
+
+This issue affects usability and navigation across all modules, causing disruptions in user experience.
+
+h4. *Suggested Fix:*
+
+* Modify the Help Button functionality to *open the Help Pages in a new tab or window* instead of navigating away.
+* Ensure that if the Help Page opens in the same window, there is a *Return to Previous Page* button.
+* Maintain the side menu context based on the user's current module instead of defaulting to General Settings."
+Bug,(SP21): Missing Column Filtering Functionality in Help Pages List View Screen,Maha Muhammed,Muhammed Saeed,2,To Do,2025-02-13T16:42:00.000Z,2025-02-13T16:43:00.000Z,"*Title: Missing Column Filtering Functionality in Help Pages List View Screen*
+
+*Module:* Help Pages
+
+*Screen:* Help Pages List View Screen
+
+*Severity:* Major
+
+*Priority:* High
+
+----
+
+h3. *Description:*
+
+The Help Pages List View Screen lacks column filtering functionality, preventing users from filtering records based on column values.
+
+----
+
+h3. *Steps to Reproduce:*
+
+# Navigate to the Help Pages module in the ERP system.
+# Open the List View Screen.
+# Attempt to filter any column using the column filtration functionality.
+
+----
+
+h3. *Expected Result:*
+
+Each Important column in the Help Pages List View Screen should have a filtering icon or option to allow users to filter records based on column values.
+
+----
+
+h3. *Actual Result:*
+
+No filtering functionality is provided for any column in the Help Pages List View Screen.
+
+----"
+Bug,(SP21): Unable to Change Fonts Family in Help Pages Text Editor,Maha Muhammed,Muhammed Saeed,2,To Do,2025-02-13T16:34:00.000Z,2025-02-13T16:35:00.000Z,"*Title: Unable to Change Fonts Family in Help Pages Text Editor*
+*Module:* Admin Portal - Help Pages
+*Severity:* Major
+*Priority:* High
+
+----
+
+h3. *Description:*
+
+The text editor used in the Admin Portal's Help Pages does not allow users to change fonts. Despite selecting different font options from the toolbar, the applied text remains in the default font style.
+
+----
+
+h3. *Steps to Reproduce:*
+
+# Navigate to Admin Portal > Help Pages.
+# Open an existing Help Page or create a new one.
+# Highlight a text segment in the editor.
+# Attempt to change the font using the toolbar options.
+
+----
+
+h3. *Expected Result:*
+
+The selected text should reflect the chosen font style.
+
+----
+
+h3. *Actual Result:*
+
+The selected text remains in the default font, regardless of the chosen font."
+Bug,SP21:  Arabic Text Formatting and Localization Issues in Admin Portal CMS Text Editor,Maha Muhammed,Muhammed Saeed,3,To Do,2025-02-13T15:49:00.000Z,2025-02-13T15:51:00.000Z,"h3. *Title: Arabic Text Formatting and Localization Issues in Admin Portal Text Editor*
+
+h4. *Module:* Admin Portal  CMS Text Editor
+
+h4. *Severity:* ?? *High*
+
+h4. *Priority:* ?? *Medium*
+
+h4. *Environment:*
+
+* ERP System Admin Portal (Web)
+* Help Pages Text Editor
+
+h4. *Description:*
+
+The CMS Text Editor in the *Admin Portal* fails to provide proper support for *Arabic text formatting*. Users are unable to apply *Right-to-Left (RTL) directionality*, and both *numeric and non-numeric lists* are not formatted correctly. Additional *localization issues* are also present.
+
+h4. *Steps to Reproduce:*
+
+# Log in to the *Admin Portal* of the ERP system.
+# Navigate to the *Help Pages Text Editor* module.
+# Input *Arabic text* into the editor.
+# Attempt to format the text to *RTL directionality*.
+# Create *numeric and non-numeric lists* with Arabic text.
+
+h4. *Actual Result:*
+
+* Arabic text cannot be formatted to *RTL* directionality.
+* *Numeric and non-numeric lists* do not reflect proper formatting in Arabic.
+* Other *localization issues* like misaligned text, incorrect date formats, and untranslated labels are evident.
+
+h4. *Expected Result:*
+
+* Users should be able to format Arabic text to *RTL* directionality seamlessly.
+* *Lists* should be correctly formatted according to Arabic standards.
+* All *localization elements* should be correctly implemented for Arabic content."
+Bug,(SP21):  Incorrect Column Header Label in Purchase Invoice View Screen,Maha Muhammed,Muhammed Saeed,3,To Do,2025-02-11T12:32:00.000Z,2025-02-11T12:33:00.000Z,"h3. *Bug Report: Incorrect Column Header Label in Purchase Invoice View Screen*
+
+h4. *Module:* Purchase ? Purchase Invoice ? View Screen
+
+h4. *Severity:* ?? *Low*
+
+h4. *Priority:* ?? *Medium*
+
+h4. *Environment:*
+
+* ERP System (Web)
+* Affected Screen: Purchase Invoice View Screen
+
+h4. *Description:*
+
+The *""Barcode""* column header is incorrectly labeled as *""Bar Code""* instead of the correct term *""Barcode""* in the Purchase Invoice View Screen. This inconsistency may cause confusion for users and does not align with standard naming conventions.
+
+h4. *Steps to Reproduce:*
+
+# Log in to the ERP system with valid credentials.
+# Navigate to *Purchase ? Purchase Invoice ? List View*.
+# Open any existing Purchase Invoice to view its details.
+# Locate the column header for item barcodes.
+
+h4. *Actual Result:*
+
+The column header is displayed as *""Bar Code""*.
+
+h4. *Expected Result:*
+
+The column header should be displayed as *""Barcode""* to maintain consistency and clarity."
+Bug,"(SP:22): Vendor Statement Report Screen, Missing Required Message For All Data.",Abanoub Nabil,Yassmin,3,To Do,2025-02-06T14:45:00.000Z,2025-03-04T10:19:00.000Z,"# Select Vendor , From Date , To Date Fields Should Ended with (*).
+# When I Click View Button Without Selecting Any Data,
+
+ *Expected Result:* The error message should appear as Field Name is Required.
+
+ *Actual Result:* The required message is missing."
+Bug,"(SP:22): Vendor Opening Balance Screen, The Data of Distributed Popup Deleted When I Click The Discard Button. ",Mohamed Fathy,Yassmin,3,To Do,2025-02-05T16:41:00.000Z,2025-03-09T14:00:00.000Z,"When I Entered The Data in Distributed Popup Then Click Save and Open it Again Then Click Discard,
+
+*Expected Result:* The data deleted .
+
+*Actual Result:* The data shouldnt delete, it should still without any changes on it."
+Bug,"(SP:22): Vendor Opening Balance Screen, The Error Message of Exceeded The Journal Line Amount Should be Handled.",Abanoub Nabil,Yassmin,3,To Do,2025-02-05T16:25:00.000Z,2025-03-04T10:20:00.000Z,"*Expected Result:* The Error Message of Exceeded The Journal Line Amount Should be Handled As The Amount of Opening Balance Exceeded The Journal Line Amount.
+
+*Actual Result:* The Error Message is ErrorSum."
+Bug,"(SP:22): Purchase Invoice Add Screen, Undescriptive Error Message of required set tracking.",Muhammed Nabil,Yassmin,3,To Do,2025-02-03T00:35:00.000Z,2025-02-23T15:37:00.000Z,"When I Select An Item With No Tracking And Has Expiry True:
+
+*Expected Result:* 
+
+# The required message below the field should be with red color.
+# The required message after click save button should be more descriptive.
+
+*Actual Result:*
+
+# The required message below the field was Black.
+# The required message after click save button was Required."
+Bug,(SP21):  Multiple Stock In Entries Created When Clicking Save Button Multiple Times,Muhammed Nabil,Muhammed Saeed,2,Testing,2025-02-02T14:07:00.000Z,2025-03-03T14:55:00.000Z,"h4. *Title:* *Multiple Stock In Entries Created When Clicking Save Button Multiple Times*
+
+* *Severity:* *Critical*
+* *Module:* *Inventory Management - Stock In (Add New Entry)*
+* *Environment:* Web Application
+
+----
+
+h4. *Bug Description*
+
+When a user *clicks the Save button multiple times* in the *Stock In Add Screen*, multiple stock-in records are generated instead of a *single entry*. This leads to *duplicate stock entries*, which can cause inventory discrepancies and incorrect stock levels.
+
+----
+
+h4. *Steps to Reproduce*
+
+# Navigate to the *Stock In Add* screen.
+# Fill in all *required fields* (Warehouse, Items, Quantities, etc.).
+# Click the *Save* button multiple times rapidly.
+# Observe that multiple *Stock In* records are created instead of one.
+
+----
+
+h4. *Expected Result*
+
+* The system should *disable* the Save button after the first click to *prevent duplicate submissions*.
+* Only *one* Stock In record should be created per user action.
+
+----
+
+h4. *Actual Result*
+
+* Multiple *Stock In records* are generated when clicking the Save button multiple times.
+* No *loading indicator* or button disablement prevents repeated submissions.
+
+----
+
+----
+
+----
+
+h3. *Priority:* ?? *Critical*"
+Bug,(SP21): Return Sales Invoice Add Screen Missing Walkthrough Guide with Instructional Steps,Ahmed Gamal,Muhammed Saeed,3,To Do,2025-02-02T13:26:00.000Z,2025-02-05T11:48:00.000Z,"*Title:* *Return Sales Invoice Add Screen Missing Walkthrough Guide with Instructional Steps*
+
+* *Severity:* *Medium*
+* *Module:* *Return Sales Invoice (Add Screen - User Guidance Feature)*
+
+----
+
+h4. *Bug Description*
+
+The *Return Sales Invoice Add screen* does not include a *walkthrough guide* that provides step-by-step instructions on how to use the screen. New or unfamiliar users may struggle to understand the required fields, available options, and correct workflow for creating a Return Sales Invoice.
+
+----
+
+h4. *Steps to Reproduce*
+
+# Navigate to the *Return Sales Invoice Add Screen*.
+# Look for an *on-screen walkthrough guide* or *help instructions*.
+# Observe that no *step-by-step guidance* is provided to assist users in filling out the form.
+
+----
+
+h4. *Expected Result*
+
+* A *walkthrough guide* should be available, helping users understand how to:
+** *Select a customer* and relevant details.
+** *Add items* and define pricing, discounts, and tax.
+** *Verify totals and submit the invoice.*
+** Understand *mandatory fields* and avoid common mistakes.
+* The guide should appear *on first visit* and be accessible via a *Help or Info button*.
+
+----
+
+h4. *Actual Result*
+
+* *No walkthrough guide* or instructional pop-ups exist in the Return Sales Invoice Add screen.
+* Users may experience *confusion* when attempting to complete the invoice without prior knowledge.
+
+
+
+----"
+Bug,(SP21):  Sales Invoice Add Screen Missing Walkthrough Guide with Instructional Steps,Ahmed Gamal,Muhammed Saeed,3,To Do,2025-02-02T13:21:00.000Z,2025-02-05T11:49:00.000Z,"*Title:* *Sales Invoice Add Screen Missing Walkthrough Guide with Instructional Steps*
+
+* *Severity:* *Medium*
+* *Module:* *Sales Invoice (Add Screen - User Guidance Feature)*
+* *Environment:* Web Application
+
+----
+
+h4. *Bug Description*
+
+The *Sales Invoice Add screen* does not include a *walkthrough guide* that provides step-by-step instructions on how to use the screen. New or unfamiliar users may struggle to understand the required fields, available options, and correct workflow for creating a sales invoice.
+
+----
+
+h4. *Steps to Reproduce*
+
+# Navigate to the *Sales Invoice Add Screen*.
+# Look for an *on-screen walkthrough guide* or *help instructions*.
+# Observe that no *step-by-step guidance* is provided to assist users in filling out the form.
+
+----
+
+h4. *Expected Result*
+
+* A *walkthrough guide* should be available, helping users understand how to:
+** *Select a customer* and relevant details.
+** *Add items* and define pricing, discounts, and tax.
+** *Verify totals and submit the invoice.*
+** Understand *mandatory fields* and avoid common mistakes.
+* The guide should appear *on first visit* and be accessible via a *Help or Info button*.
+
+----
+
+h4. *Actual Result*
+
+* *No walkthrough guide* or instructional pop-ups exist in the Sales Invoice Add screen.
+* Users may experience *confusion* when attempting to complete the invoice without prior knowledge.
+
+----"
+Bug,"(SP21): Missing Walkthrough Guide for the ""Fund Transfer"" Module in Finance App",Ahmed Gamal,Muhammed Saeed,3,To Do,2025-02-02T13:01:00.000Z,2025-02-05T11:50:00.000Z,"*Title:*
+Missing Walkthrough Guide for the ""Fund Transfer"" Module in Finance App
+
+*Description:*
+The *""Fund Transfer""* module under *Finance App ? Transactions* does not have a *Walkthrough Guide* to assist users in understanding its functionality. This makes it difficult for new users to navigate and complete fund transfer operations efficiently. Other modules in the Finance App have walkthrough guides, but this module lacks one entirely.
+
+----
+
+h3. *Precondition:*
+
+* User is logged into the *Finance App*.
+* The *Walkthrough Guide* feature is enabled for other modules.
+* The user navigates to the *Fund Transfer* module under *Transactions*.
+
+----
+
+h3. *Steps to Reproduce:*
+
+# Navigate to *Finance App ? Transactions ? Fund Transfer*.
+# Look for a *Walkthrough Guide* or an onboarding tutorial.
+# Observe that no *Walkthrough Guide* is available.
+# Compare with other Finance App modules where walkthroughs are present.
+
+----
+
+h3. *Expected Result:*
+
+* A *Walkthrough Guide* should be available to explain the steps involved in *Fund Transfers*.
+* Users should receive *step-by-step instructions* on filling out required fields and completing a transfer.
+* A *helpful tooltip or onboarding overlay* should guide users through key functionalities.
+
+----
+
+h3. *Actual Result:*
+
+* No *Walkthrough Guide* exists for the *Fund Transfer* module.
+* Users are left to figure out the process manually.
+* This inconsistency with other Finance App modules affects *usability* and *user onboarding*.
+
+----
+
+h3. *Severity:*
+
+*Low*  The module functions correctly, but usability is impacted for new users.
+
+h3. *Priority:*
+
+*Medium*  Important for consistency and improving user experience."
+Bug,(SP21): Purchase Invoice Screen Guide Walkthrough Does Not Display Steps After Step 9 /13,Ahmed Gamal,Muhammed Saeed,2,Code review,2025-02-02T12:47:00.000Z,2025-02-09T13:03:00.000Z,"*Title:*
+Purchase Invoice Screen Guide Walkthrough Does Not Display Steps After Step 9 
+
+*Description:*
+The *Guide Walkthrough* feature in the *Purchase Invoice* screen does not display steps beyond *Step 9*, even though there are a total of *13 steps*. Additionally, an *overlay layer* appears without any *Cancel* or *Close* action, preventing the user from exiting the guide. The only way to continue using the system is to *refresh the page*, which disrupts the user experience.
+
+----
+
+h3. *Precondition:*
+
+* User is logged into the Purchase App.
+* The *Guide Walkthrough* feature is enabled.
+* The Purchase Invoice screen has a guided step-by-step walkthrough.
+
+----
+
+h3. *Steps to Reproduce:*
+
+# Navigate to the *Purchase Invoice* screen.
+# Start the *Guide Walkthrough* feature.
+# Progress through the steps until *Step 9*.
+# Observe that *Steps 10 to 13* are not displayed.
+# Notice that an *overlay layer* appears, blocking interactions with the screen.
+# Attempt to exit the walkthrough  there is *no Cancel or Close button*.
+# The user is forced to *refresh the page* to regain access to the system.
+
+----
+
+h3. *Expected Result:*
+
+* The *Guide Walkthrough* should display all *13 steps* correctly.
+* Users should be able to navigate through all steps *without interruption*.
+* A *Cancel or Close button* should be available to exit the guide at any point.
+
+----
+
+h3. *Actual Result:*
+
+* The walkthrough stops displaying after *Step 9*, leaving out *Steps 10 to 13*.
+* An *overlay layer* appears, preventing further interaction with the screen.
+* There is *no Cancel/Close button*, forcing users to *refresh the page* to exit.
+
+----
+
+h3. *Severity:*
+
+*Medium*  Affects usability but does not impact data integrity.
+
+h3. *Priority:*
+
+*High*  Should be fixed to ensure a smooth onboarding experience for users."
+Bug,(SP21): System Accepts Discount Amount Greater Than Cost in Purchase Invoice but Displays Incorrect Validation After Save and Post,Muhammed Nabil,Muhammed Saeed,2,Testing,2025-01-30T12:11:00.000Z,2025-03-03T14:50:00.000Z,"*Title:*
+System Accepts Discount Amount Greater Than Cost in Purchase Invoice but Displays Incorrect Validation After Save and Post
+
+*Description:*
+When a user inputs a discount amount greater than the cost in the Purchase Invoice, the system allows this value to be entered. However, upon clicking the ""Save"" button, a descriptive validation message appears, prompting the user to correct the discount amount. Once the user clears the greater discount and enters a valid value, the transaction is saved successfully. But when the user clicks the ""Post"" button, an undescriptive validation message is displayed with network error messages such as ""Cost must be positive"" and ""Quantity must be positive."" This behavior indicates that the system either does not correctly clear cache or does not respond properly to changes in field values.
+
+*Precondition:*
+
+* User is logged into the ERP system.
+* The user is on the Purchase Invoice screen.
+* The discount amount is entered as greater than the cost.
+
+*Steps to Reproduce:*
+
+# Navigate to the Purchase app > Purchase Invoice.
+# Enter all required fields for the purchase invoice.
+# Click Add new Line to add new item
+# Select Items from the Dropdown and input valid Quantity and Cost
+# Input a discount amount that is greater than the item cost.
+# Click the ""Save"" button.
+# A descriptive validation message is shown indicating the discount amount is greater than the cost.
+# Correct the discount amount to a valid value and click the ""Save"" button again. The transaction is saved successfully.
+# Click the ""Post"" button to try to post the transaction.
+
+*Expected Result:*
+
+* The discount amount should not be allowed to exceed the cost value in the first place.
+* After inputting valid values and saving the transaction, the post operation should succeed without any validation errors.
+
+*Actual Result:*
+
+* The system allows the discount amount to exceed the cost.
+* After saving, the user receives a validation message that prompts them to adjust the discount amount.
+* After entering a valid discount and saving the transaction, the user encounters an undescriptive validation message when trying to post the transaction.
+* The network error messages include ""Cost must be positive"" and ""Quantity must be positive,"" even though the data appears to be correct.
+* The system does not correctly clear cache or respond properly to field value changes, causing the undescriptive error."
+Bug,"(SP21): ""Fill Items Data with Excel"" functionality not populating items in the ""Add Price Policy"" screen.",Abanoub Nabil,Muhammed Saeed,2,To Do,2025-01-28T16:22:00.000Z,2025-03-03T14:48:00.000Z,"*Title:*
+""Fill Items Data with Excel"" functionality not populating items in the ""Add Price Policy"" screen.
+
+*Description:*
+The ""Fill Items Data with Excel"" feature in the ""Add Price Policy"" screen is not working as expected. When users upload a filled Excel template, no data is populated in the ""Items Lines"" section despite the success message being displayed.
+
+*Steps to Reproduce:*
+
+# Log in to the ERP system and navigate to the ""Add Price Policy"" screen.
+# Click on the ""Upload Excel"" button to download the template.
+# Fill in the required and valid data in the downloaded Excel template for relevant items.
+# Save the filled Excel file.
+# Upload the filled Excel file.
+# After uploading, the system displays a confirmation message: ""Operation completed successfully.""
+# However, upon checking the ""Items Lines"" section, no item data is populated.
+
+*Expected Behavior:*
+After uploading a valid, filled Excel template, the ""Items Lines"" section should automatically populate with the data from the uploaded file.
+
+*Actual Behavior:*
+Despite the success message ""Operation completed successfully,"" no data appears in the ""Items Lines"" section after uploading the Excel file.
+
+*Priority:*
+High (affects the ability to upload data for price policy creation efficiently)."
+Bug,(SP21):  Add Item Catalog Quick Add Form Size Issue,Abanoub Nabil,Muhammed Saeed,3,To Do,2025-01-28T14:33:00.000Z,2025-02-04T15:54:00.000Z,"*Title:* Add Item Catalog Quick Add Form Is Too Small and Missing Buttons
+
+* *Severity:* Major
+* *Module:* Inventory > Add Item Catalog (Quick Add Form)
+* *Environment:* Web Application
+
+----
+
+h4. *Bug Description*
+
+The size (height) of the *Add Item Catalog Quick Add Form* is too small, resulting in the absence of the *Save* and *Cancel* buttons within the visible area of the form. This makes it impossible for users to complete or cancel the form submission process.
+
+----
+
+h4. *Steps to Reproduce*
+
+# Navigate to the *Inventory* module in the system.
+# Select the *Quick Add* option to open the *Add Item Catalog* form.
+# Observe the form size and check for the presence of the *Save* and *Cancel* buttons.
+
+----
+
+h4. *Expected Result*
+
+* The *Add Item Catalog Quick Add Form* should have an appropriate height that displays all required elements, including the *Save* and *Cancel* buttons, without requiring resizing or scrolling.
+
+----
+
+h4. *Actual Result*
+
+* The form's height is too small.
+* The *Save* and *Cancel* buttons are not visible or accessible within the form's default size."
+Bug,(SP21): @General Links Not Opening in New Tab or New Window,Abanoub Nabil,Muhammed Saeed,3,To Do,2025-01-28T12:37:00.000Z,2025-02-04T15:55:00.000Z,"*Title:* Links fail to open in a new tab or new window when using ""Open in New Tab"" or ""Open in New Window"" options.
+
+* *Severity:* Major
+* *Module:* All System Modules
+* *Environment:* Web Application
+
+----
+
+h4. *Bug Description*
+
+When the user right-clicks on any active link in the system and selects either ""Open in New Tab"" or ""Open in New Window,"" the link does not launch as expected in the new tab or window. This behavior is consistent across all modules in the system.
+
+----
+
+h4. *Steps to Reproduce*
+
+# Navigate to any module in the system.
+# Locate an active link (e.g., a navigation link or action link).
+# Right-click on the link and select *""Open in New Tab""* or *""Open in New Window""* from the context menu.
+
+----
+
+h4. *Expected Result*
+
+* The selected link should open in a new tab or window as per the chosen option.
+* The content of the link should load successfully in the new tab or window.
+
+----
+
+h4. *Actual Result*
+
+* The link does not open in a new tab or window.
+* No content is loaded, and the user's action does not yield any response."
+Bug,SP 22 - Financial Calendar: Error Missing When Closing Year Without Posting Journal Entries.,Nader Moustafa,Tasneem Fathy,2,Testing,2025-01-27T16:49:00.000Z,2025-02-23T15:37:00.000Z,"*Description*:
+In the Financial Calendar screen, when entering the date range *1/1/2026 to 2/1/2026* and attempting to close the year, no error message appears despite unposted journal entries within the specified date range. The system only saves the journal entry but does not post it, preventing proper closure of the financial calendar.
+
+*Steps to Reproduce*:
+
+# Navigate to the *Financial Calendar* screen.
+# Enter the date range *1/1/2026 to 2/1/2026*.
+# Create a journal entry with a date within this range (*e.g., 2/1/2026*) and save it without posting.
+# Attempt to close the financial year using the *Close Year* option.
+
+*Expected Result*:
+An error message should appear, stating that all journal entries within the selected date range must be posted before closing the financial year.
+
+*Actual Result*:
+
+* The system allows the year to be closed without verifying the status of journal entries.
+* No error message appears to notify the user of the unposted journal entry."
+Bug,(SP21) : Longitude and Latitude Not Auto-Filled After Selecting a Map Point in Address Tab,Maha Muhammed,Muhammed Saeed,3,Testing,2025-01-26T13:04:00.000Z,2025-02-04T16:01:00.000Z,"*Title:*
+Longitude and Latitude Not Auto-Filled After Selecting a Map Point in Address Tab
+
+----
+
+*Description:*
+In the *Vendor Definition Add* screen, under the *Address Tab*, selecting a point on the map does not automatically populate the *Longitude* and *Latitude* fields. This issue disrupts the workflow and requires users to manually input coordinates, which can lead to errors.
+
+----
+
+*Precondition:*
+
+* The ERP system is accessible, and the user is logged in with permissions to add vendor definitions.
+* The map integration is functional and visible in the *Address Tab*.
+
+----
+
+*Steps to Reproduce:*
+
+# Log in to the ERP system.
+# Navigate to Purchase App
+# Navigate to the *Vendor Definition Add* screen.
+# Open the *Address Tab*.
+# Use the map to select a location point.
+
+----
+
+*Expected Result:*
+The *Longitude* and *Latitude* fields should be automatically populated with the coordinates of the selected point on the map.
+
+----
+
+*Actual Result:*
+The *Longitude* and *Latitude* fields remain empty after selecting a point on the map, requiring the user to manually input the coordinates."
+Bug,"Column Filtering in Select JL Account Advanced Dialog Allows User to Select Account Without Viewing Details Treasury Edit Screen
+",Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-23T10:27:00.000Z,2025-01-23T10:27:00.000Z,"*Title:*
+Column Filtering in Select JL Account Advanced Dialog Allows User to Select Account Without Viewing Details
+
+*Description:*
+In the *Select JL Account Advanced Dialog*, accessed via the *Edit Treasury* dialog, the column filtering functionality allows users to uncheck all columns except the *Actions* column. This behavior makes it possible for users to select a JL account without being able to view its corresponding details or information, leading to confusion and potential data integrity issues.
+
+*Steps to Reproduce:*
+
+# Navigate to the *Treasury List View*.
+# Select a treasury and open the *Edit Treasury* dialog.
+# Click the *Advanced Search* icon for the JL Account field to open the *Select JL Account Advanced Dialog*.
+# Use the column filtering options to uncheck all columns except the *Actions* column.
+# Attempt to select a JL account without viewing its details.
+
+*Expected Result:*
+
+* Users should not be able to uncheck all essential columns that display critical information (e.g., account name, Code, or description).
+* A validation mechanism should ensure that key columns remain visible to prevent ambiguous or uninformed account selection.
+
+*Actual Result:*
+
+* The *Actions* column remains the only visible column after unchecking all other columns.
+* Users can select a JL account without seeing any additional details or information about the account.
+
+*Severity:*
+High"
+Bug,(SP20): Treasury Statement Fails to Display Opening Balance for Treasuries with No Transactions,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-23T10:17:00.000Z,2025-01-23T10:17:00.000Z,"*Title:*
+Treasury Statement Fails to Display Opening Balance for Treasuries with No Transactions
+
+*Description:*
+When a user generates a *Treasury Statement* for a treasury with no transactions and applies a valid date range using the *From Date* and *To Date* filters, the opening balance is not displayed. Additionally, no informative message is shown to indicate the absence of transactions or opening balance, which creates confusion for the user.
+
+*Steps to Reproduce:*
+
+# Navigate to the *Treasury Statement* screen.
+# Select a treasury with no transactions recorded.
+# Set a valid *From Date* and *To Date* filter.
+# Click on the *Generate Report* button.
+# Observe the generated statement.
+
+*Expected Result:*
+
+* The Treasury Statement should display the opening balance, even if no transactions are present during the selected date range.
+* If the treasury has no opening balance or transactions, the system should display an informative message such as:
+""No transactions available for the selected date range. The opening balance is [0 or X amount].""
+
+*Actual Result:*
+
+* The Treasury Statement does not display any opening balance.
+* No informative message is provided, leaving the user uncertain about the state of the treasury.
+
+*Severity:*
+Medium"
+Bug,SP 21 - Financial Calendar: Success Message for Row Deletion Needs to Be Handled,Maha Muhammed,Tasneem Fathy,3,Testing,2025-01-22T23:24:00.000Z,2025-02-23T15:37:00.000Z,"*Description*:
+In the *Financial Calendar* screen, when a row is deleted from the list, the success message displayed is generic or unclear. The message should explicitly indicate that the row was deleted successfully to enhance user clarity and experience.
+
+*Steps to Reproduce*:
+
+# Navigate to the *Financial Calendar* screen.
+# Select a row in the list to delete.
+# Click the *Delete* button.
+# Observe the success message displayed after the deletion.
+
+*Expected Result*:
+A clear and specific success message should appear, such as: ""The selected row has been deleted successfully.""
+
+*Actual Result*:
+The success message is generic or unclear, failing to indicate the specific action performed."
+Bug,(SP20): Search Input Hidden in Chart of Accounts (Tree View) on Vertical Scroll,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-22T15:43:00.000Z,2025-01-22T15:44:00.000Z,"*Title:*
+Search Input Disappears When Scrolling Vertically in Chart of Accounts (Tree View)
+
+*Description:*
+In the Chart of Accounts (Tree View) screen, the search input field is hidden when the user scrolls vertically through the tree components. This issue causes inconvenience, as users cannot access the search functionality while navigating the tree structure.
+
+*Steps to Reproduce:*
+
+# Navigate to the Chart of Accounts screen in the system.
+# Switch to the Tree View mode.
+# Scroll down vertically through the tree structure.
+# Observe the visibility of the search input field.
+
+*Expected Result:*
+The search input field should remain fixed at the top of the screen or should be easily accessible while scrolling through the tree components.
+
+*Actual Result:*
+The search input field is hidden when the user scrolls vertically, making it inaccessible unless the user scrolls back to the top.
+
+*Severity:*
+Medium"
+Bug,(SP20): System Fails to Delete Sub UOMs in Edit Screen Despite Displaying Success Message,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-22T13:14:00.000Z,2025-02-02T09:32:00.000Z,"*Title:*
+System Fails to Delete Sub UOMs in Edit Screen Despite Displaying Success Message
+
+*Description:*
+In the Unit of Measure (UOM) Edit screen, when a user attempts to delete Sub UOMs that have not been used in any transactions or master data, the system displays a success message after confirmation. However, the Sub UOMs remain visible in the Edit screen even after multiple page refreshes.
+
+*Precondition:*
+
+There is a saved UOM that has many related sub UOMS
+
+*Steps to Reproduce:*
+
+# Navigate to the Inventory app.
+# Open the UOM Edit screen.
+# Delete one or more Sub UOMs by clicking the ""Delete"" button next to them.
+# Confirm the delete action in the confirmation dialog.
+# Refresh the UOM Edit screen multiple times.
+
+*Expected Result:*
+The deleted Sub UOMs should be successfully removed from the Edit screen and not appear again after the system displays the success message.
+
+*Actual Result:*
+The system displays a success message indicating that the Sub UOMs were deleted. However, the Sub UOMs remain visible in the Edit screen even after refreshing the page multiple times.
+
+*Severity:*
+High"
+Bug,(SP20) Attribute Edit Screen: System Does Not Return to List View After Successful Editing,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-20T17:09:00.000Z,2025-01-20T17:10:00.000Z,"*Title:*
+System Fails to Redirect to List View After Successful Editing in Attribute Edit Screen
+
+*Description:*
+After successfully editing an attribute in the Inventory app's Attribute Edit screen, the system does not redirect the user back to the List view. Instead, the user remains on the Edit screen, causing confusion about whether the operation was successful.
+
+*Steps to Reproduce:*
+
+# Navigate to the Inventory app.
+# Open the Attribute List view.
+# Select an attribute and click the ""Edit"" button.
+# Make valid changes to the attribute fields.
+# Click the ""Save"" button.
+
+*Expected Result:*
+The system should display a success message and redirect the user back to the Attribute List view.
+
+*Actual Result:*
+The system displays a success message but does not redirect the user back to the Attribute List view.
+
+*Severity:*
+Medium"
+Bug,(SP20) Attribute Edit Screen: Missing Required Validation Messages,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-20T17:08:00.000Z,2025-01-20T17:10:00.000Z,"*Title:*
+Missing Required Validation Messages After Clicking Save with Empty Required Fields
+
+*Description:*
+When a user clears the required fields and clicks the ""Save"" button on the Attribute Edit screen, the system does not display validation messages to inform the user of missing required data. This prevents the user from understanding why the operation cannot proceed.
+
+*Steps to Reproduce:*
+
+# Navigate to the Inventory app.
+# Open the Attribute List view and select an attribute to edit.
+# Clear all required fields (e.g., Attribute Name, Value).
+# Click the ""Save"" button.
+
+*Expected Result:*
+The system should display clear validation messages under or near the required fields, indicating that they need to be filled.
+
+*Actual Result:*
+The system does not display any validation messages, leaving the user unaware of the missing data.
+
+*Severity:*
+High"
+Bug,(SP20) Attribute Edit Screen: Save Button Infinite Loading and Unresponsive Components,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-20T17:07:00.000Z,2025-01-20T17:10:00.000Z,"*Title:*
+Save Button Shows Infinite Loading and Becomes Unresponsive After Deleting All Value Lines
+
+*Description:*
+On the Attribute Edit screen, if the user deletes all value lines and then clicks the ""Save"" button, the button displays an infinite loading icon, changes its shape, and becomes unresponsive. Additionally, the screen components become non-actionable, requiring a page refresh to recover functionality.
+
+*Steps to Reproduce:*
+
+# Navigate to the Inventory app.
+# Open the Attribute List view and select an attribute to edit.
+# Delete all value lines from the attribute.
+# Click the ""Save"" button.
+
+*Expected Result:*
+The system should display a validation message stating that at least one value line is required and allow the user to continue editing.
+
+*Actual Result:*
+The ""Save"" button shows an infinite loading icon, changes its shape, and becomes unresponsive. The entire screen's components are non-actionable, and functionality is only restored after refreshing the page.
+
+*Severity:*
+Critical"
+Bug,(SP20): Profile Link Not Actionable in Business Owner Screen,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-19T10:08:00.000Z,2025-01-19T10:09:00.000Z,"h3. *Title: Profile Link Not Actionable in Business Owner Screen*
+
+*Project/Module:* ERP System  Business Owner Screen
+*Severity:* High
+
+----
+
+h3. *Issue Description*
+
+The ""Profile"" link in the Business Owner screen is not actionable. Clicking the link does not navigate to the profile details page or trigger any response, rendering it non-functional.
+
+----
+
+h3. *Steps to Reproduce*
+
+# Log in to the Business Owner screen.
+# Locate the ""Profile"" link in the top-right corner.
+# Attempt to click the ""Profile"" link.
+# Observe the system's behavior.
+
+----
+
+h3. *Expected Behavior*
+
+Clicking the ""Profile"" link should redirect the user to the Profile details page or open the profile management view, allowing the user to update their information.
+
+----
+
+h3. *Actual Behavior*
+
+The ""Profile"" link does not respond to user interaction. No redirection, action, or feedback occurs upon clicking the link."
+Bug,(SP20): Dark Mode Not Applying in Business Owner Screen,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-19T10:03:00.000Z,2025-01-19T10:03:00.000Z,"h3. *Title: Dark Mode Not Applying in Business Owner Screen*
+
+*Project/Module:* ERP System  Business Owner Screen
+*Severity:* Medium
+
+----
+
+h3. *Issue Description*
+
+The Business Owner screen does not switch to Dark Mode when the user selects the Dark Mode option. This issue persists even though the rest of the system successfully applies the Dark Mode setting.
+
+----
+
+h3. *Steps to Reproduce*
+
+# Log in to the Business Owner screen.
+# Open the system's appearance settings.
+# Select the Dark Mode option.
+# Observe whether the Business Owner screen updates to Dark Mode.
+
+----
+
+h3. *Expected Behavior*
+
+The Business Owner screen should switch to Dark Mode immediately upon selecting the option, consistent with other screens in the system.
+
+----
+
+h3. *Actual Behavior*
+
+The Business Owner screen remains in Light Mode, ignoring the user's selection of Dark Mode."
+Bug,(SP20): Language and Localization Not Changing in Business Owner Screen,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-19T09:55:00.000Z,2025-01-19T09:55:00.000Z,"h3. *Title: Language and Localization Not Changing in Business Owner Screen*
+
+*Project/Module:* ERP System  Business Owner Screen
+*Severity:* Medium
+
+----
+
+h3. *Issue Description*
+
+The Business Owner screen does not update its language and localization settings when the user attempts to change them. This issue persists despite successfully changing the language settings in other parts of the system.
+
+----
+
+h3. *Steps to Reproduce*
+
+# Log in to the Business Owner screen.
+# Attempt to change the language and localization settings through the system's language selector.
+# Observe whether the screen reflects the updated language and localization settings.
+
+----
+
+h3. *Expected Behavior*
+
+The Business Owner screen should update its language and localization settings to match the selected language immediately or upon refresh, similar to other screens in the system.
+
+----
+
+h3. *Actual Behavior*
+
+The Business Owner screen remains in the default language, ignoring the user's selected language and localization preferences."
+Bug,"(SP20): Required validation messages in (CMS Add/Edit Screen) are displayed in black color font, making them hard to distinguish",Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T11:41:00.000Z,2025-01-16T11:41:00.000Z,"*Title:*
+Required validation messages in (CMS Add/ Edit Screens)are displayed in black color font, making them hard to distinguish
+
+*Description:*
+The required validation messages in the *CMS Management* section are displayed in black color font, which makes them difficult to see, especially when the background or surrounding elements are dark. This affects the usability of the system, as users may miss critical validation feedback when filling out forms.
+
+*Precondition:*
+
+# The user is on the *CMS Management* screen.
+# A required field is left empty or invalid in the CMS form.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an authorized user.
+# Navigate to the *CMS Management* section.
+# Attempt to save a new CMS entry without filling in all the required fields.
+# Observe the validation messages displayed for the missing or incorrect fields.
+
+*Expected Result:*
+
+# Validation messages should be displayed in a color that contrasts clearly with the background, such as red or another easily distinguishable color.
+# The messages should be easy to see and should draw attention to the user that a required field is missing or invalid.
+
+*Actual Result:*
+
+# The required validation messages are displayed in black font.
+# The messages are difficult to distinguish, especially if the background or surrounding elements are dark in color."
+Bug,(SP20): System cannot delete the saved CMS; returns status code 405 without a descriptive message,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-16T11:35:00.000Z,2025-03-04T10:35:00.000Z,"*Title:*
+System cannot delete the saved CMS; returns status code 405 without a descriptive message
+
+*Description:*
+When attempting to delete a saved CMS entry, the system fails to perform the operation and returns a status code 405. The user is not provided with a descriptive error message explaining the failure, resulting in confusion and the inability to take corrective action.
+
+*Precondition:*
+
+# The user is logged into the admin portal.
+# A CMS entry is already saved in the system.
+# The user has sufficient permissions to delete CMS entries.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an authorized user.
+# Navigate to the *CMS Management* section.
+# Locate a saved CMS entry in the list.
+# Click the *Delete* button for the selected CMS entry.
+# Observe the systems response and behavior.
+
+*Expected Result:*
+
+# The CMS entry should be deleted successfully, with the system returning a confirmation message (e.g., ""CMS entry deleted successfully"").
+# If the deletion fails, the system should display a descriptive error message (e.g., ""Deletion failed: HTTP method not allowed. Please contact support."").
+
+*Actual Result:*
+
+# The system fails to delete the CMS entry and returns a status code 405.
+# No descriptive error message is displayed to the user.
+# The CMS entry remains in the list."
+Bug,"(SP20): Missing tooltips on ""Proceed to Offline Payment"" and ""Proceed to Online Payment"" buttons",Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T11:19:00.000Z,2025-01-16T11:19:00.000Z,"*Title:*
+Missing tooltips on ""Proceed to Offline Payment"" and ""Proceed to Online Payment"" buttons
+
+*Description:*
+The *Invoice Payment* screen is missing tooltips for the *""Proceed to Offline Payment""* and *""Proceed to Online Payment""* buttons. Tooltips provide additional guidance to users about the purpose and functionality of these buttons, enhancing the user experience and reducing confusion.
+
+*Precondition:*
+
+# The user is on the *Invoice Payment* screen with an unpaid invoice.
+# The *""Proceed to Offline Payment""* and *""Proceed to Online Payment""* buttons are visible and actionable.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as a user.
+# Navigate to the *Invoice Payment* screen.
+# Hover over the *""Proceed to Offline Payment""* button.
+# Hover over the *""Proceed to Online Payment""* button.
+
+*Expected Result:*
+Tooltips should appear when hovering over the buttons:
+
+* *Proceed to Offline Payment*: ""Click to pay the invoice through offline payment methods such as bank transfer or cash.""
+* *Proceed to Online Payment*: ""Click to pay the invoice through an online payment gateway using Visa, MasterCard, or other online payment methods.""
+
+*Actual Result:*
+No tooltips are displayed when hovering over either button, leaving users without additional guidance."
+Bug,"(SP20): System enables multiple success payment operations upon repeated clicks of ""Proceed to Offline Payment"" and ""Proceed to Online Payment"" Buttons",Mohamed Fathy,Muhammed Saeed,2,Testing,2025-01-16T11:16:00.000Z,2025-03-04T10:35:00.000Z,"*Title:*
+System enables multiple success payment operations upon repeated clicks of ""Proceed to Offline Payment"" and ""Proceed to Online Payment"" Buttons
+
+*Description:*
+When the user clicks the *""Proceed to Offline Payment""* button, the system displays a success confirmation message. However, the *Invoice Payment* screen remains open with the *""Proceed to Offline Payment""* and *""Proceed to Online Payment""* buttons still actionable. This allows users to repeatedly perform the payment operation, resulting in multiple success confirmation messages and potentially duplicate payments.
+
+*Precondition:*
+
+# The user is on the *Invoice Payment* screen with an unpaid invoice.
+# Both *""Proceed to Offline Payment""* and *""Proceed to Online Payment""* buttons are enabled.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as a user.
+# Navigate to the *Invoice Payment* screen.
+# Click the *""Proceed to Offline Payment""* button.
+# Observe the success confirmation message.
+# From the *Invoice Payment* screen and click the *""Proceed to Offline Payment""* button again.
+# Repeat the process and observe multiple success confirmation messages.
+# From the *Invoice Payment* screen and click the *""Proceed to Online Payment""* button.
+# Complete Payment process with Correct Visa information.
+
+*Expected Result:*
+
+# After a successful offline payment, the system should disable the *""Proceed to Offline Payment""* and *""Proceed to Online Payment""* buttons for the invoice.
+# The user should be redirected to a confirmation page or the payment screen should update to reflect the payment status (e.g., marked as paid).
+# Multiple payment operations should be prevented for the same invoice.
+
+*Actual Result:*
+
+# The success confirmation message is displayed after each click on the *""Proceed to Offline Payment""* button.
+# The *Invoice Payment* screen remains open, with both payment buttons still actionable.
+# Multiple success payment operations are allowed, causing confusion and potential duplicate payments."
+Bug,"(SP20): Missing descriptive validation error when clicking ""Proceed to Offline Payment"" with an incorrectly formatted password",Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T10:32:00.000Z,2025-01-16T10:34:00.000Z,"*Title:*
+Missing descriptive validation error when clicking ""Proceed to Offline Payment"" with an incorrectly formatted password
+
+*Description:*
+When clicking the *""Proceed to Offline Payment""* button, if the user inputs a password that does not match the required format, no clear or descriptive validation error is displayed. This leaves the user unaware of why the action cannot proceed, despite all other required fields being filled correctly.
+
+*Precondition:*
+
+# The user is on the *Offline Payment* screen.
+# All required fields are correctly filled, except the password field, which contains an invalid format.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as a user.
+# Navigate to the *Offline Payment* screen.
+# Fill in all required fields with valid inputs except for the password, which should not meet the format requirements (e.g., missing special characters or required length).
+# Click the *""Proceed to Offline Payment""* button.
+# Observe the validation behavior and error message (if any).
+
+*Expected Result:*
+A clear and descriptive validation error should appear, indicating the exact password format requirements (e.g., ""Password must be at least 8 characters long and include a mix of uppercase, lowercase, numbers, and special characters."").
+
+*Actual Result:*
+No clear or descriptive validation error is displayed. The user cannot proceed but is not informed of the reason, leading to confusion."
+Bug,(SP20): Search functionality not working in the Invoice List,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T10:15:00.000Z,2025-01-16T10:18:00.000Z,"*Title:*
+Search functionality not working in the Invoice List
+
+*Description:*
+The *Search functionality* in the *Invoice List* does not return relevant or expected results. When attempting to search for invoices using criteria like invoice number, customer name, or date, the results are inaccurate or the search fails entirely.
+
+*Precondition:*
+
+# The admin user has access to the *Invoice List* screen.
+# There are multiple invoices listed in the system.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Invoices* > *List View*.
+# Use the search bar to search for an invoice using:
+#* Code
+#* Business Owner Name
+#* InvoiceDate
+# Observe the search results.
+
+*Expected Result:*
+The search functionality should return a filtered list of invoices that match the search criteria.
+
+*Actual Result:*
+
+# The search functionality does not return relevant or accurate results.
+# In some cases, no results are returned even when matching invoices exist.
+# Searching by specific criteria (e.g., date) may not be supported or functional."
+Bug,(SP20): Invoice List lacks View and Edit action buttons for unpaid invoices,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T10:04:00.000Z,2025-01-16T10:05:00.000Z,"*Title:*
+Invoice List lacks View and Edit action buttons for unpaid invoices
+
+*Description:*
+The *Invoice List* does not display the *View* and *Edit* action buttons for unpaid invoices. This prevents users from viewing the details of an unpaid invoice or making edits if necessary.
+
+*Precondition:*
+
+# The admin user has access to the *Invoice List* screen.
+# There are unpaid invoices present in the system.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Invoices* > *List View*.
+# Locate an unpaid invoice in the list.
+# Check the actions available for the unpaid invoice.
+
+*Expected Result:*
+Unpaid invoices should have *View* and *Edit* action buttons to allow the user to view details or make modifications.
+
+*Actual Result:*
+The *View* and *Edit* action buttons are missing for unpaid invoices, leaving no way to view or edit these invoices directly from the list."
+Bug,(SP20): Multiple un-understandable errors occur when sending an invoice with Some Empty Required Fields,Mohamed Hammad,Muhammed Saeed,2,To Do,2025-01-16T09:40:00.000Z,2025-03-04T10:37:00.000Z,"*Title:*
+Multiple errors occur when sending an invoice after creating a new business owner
+
+*Description:*
+When creating a new business owner, missing some required information, and specifying a price for the subdomain only, clicking the *Send Invoice* button triggers a *network error* and un-understandable multiple error pop-ups. These include:
+
+# *Error:* ""The dto field is required.""
+# *Error:* A message with unintelligible or unclear content.
+# *Error:* ""Fluent Validation Error.""
+
+*Precondition:*
+
+# The admin user has access to the *Business Owners* section.
+# A new business owner is being created with all required fields filled.
+# A price is entered for the subdomain field only.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Business Owners* > *Add New*
+# After Adding the *Business Owner* click the *Manage Button* on it.
+# *Do not Choose a currency*
+# Add *a price for the subdomain field only and leave other pricing fields empty.*
+# Add *a Price for A License such as Basic* 
+
+# Click the *Send Invoice* button.
+# Observe the errors that appear and the network behavior.
+
+*Expected Result:*
+
+# Understandable and Informative Validation message should be displayed
+# The System does not send any Invoice
+# The System still in the Add Invoice Screen 
+
+*Actual Result:*
+
+# A *network error* is triggered, and the invoice is not sent.
+# Multiple error pop-ups appear:
+#* *Error:* ""The dto field is required.""
+#* A second error with an unintelligible or unclear content message.
+#* *Error:* ""Fluent Validation Error."""
+Bug,(SP20): App side slider menu does not collapse or expand when clicking the toggler icon,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T09:24:00.000Z,2025-01-16T09:24:00.000Z,"*Title:*
+App side slider menu does not collapse or expand when clicking the toggler icon
+
+*Description:*
+The *App side slider menu* fails to respond to user actions. When clicking the *App Side Toggler Icon Button*, the menu does not collapse or expand as expected. This issue prevents users from navigating effectively within the app interface.
+
+*Precondition:*
+
+# The admin user is logged in and has access to the app interface.
+# The App side slider menu and toggler icon are visible on the screen.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to a section where the *App side slider menu* is available.
+# Click the *App Side Toggler Icon Button*.
+# Observe the behavior of the side slider menu.
+
+*Expected Result:*
+The *App side slider menu* should collapse when clicking the toggler icon if it is expanded, and expand when clicking the toggler icon if it is collapsed.
+
+*Actual Result:*
+The *App side slider menu* remains static and does not collapse or expand when the toggler icon is clicked."
+Bug,(SP20): Logo Icon does not redirect to the Home screen and opens an empty web page,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-16T09:15:00.000Z,2025-01-16T09:15:00.000Z,"*Title*: Logo Icon does not redirect to the Home screen and opens an empty web page
+
+*Description:*
+Clicking on the *MicroTec Logo Icon* does not redirect the user to the *Home screen*. Instead, it opens an empty web page. The URL associated with the logo appears to be incorrect and needs adjustment to redirect to the intended *Home screen*.
+
+*Precondition:*
+
+# The admin user has access to the portal.
+# The MicroTec logo icon is visible on the header/navigation bar.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Click on the *MicroTec Logo Icon* on the header/navigation bar.
+# Observe the resulting behavior and the URL of the opened page.
+
+*Expected Result:*
+Clicking the *MicroTec Logo Icon* should redirect the user to the *Home screen* of the portal.
+
+*Actual Result:*
+Clicking the *MicroTec Logo Icon* opens an empty web page, and the URL appears to be incorrect or broken."
+Bug,(SP20): Incorrect search functionality in the Business Owners List View,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T15:45:00.000Z,2025-01-15T15:45:00.000Z,"*Title:*
+Incorrect search functionality in the Business Owners List View
+
+*Description:*
+The search functionality in the *Business Owners List View* does not return accurate or expected results. When a search is conducted using specific criteria (e.g., business name, owner name, etc.), the results are either incorrect or incomplete, making it difficult for users to find the relevant business owners.
+
+*Precondition:*
+
+# The admin user has access to the *Business Owners List View*.
+# There are multiple business owners listed in the system.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Business Owners* > *List View*.
+# Use the search bar to search for a specific business owner or business name.
+# Observe the results returned by the search.
+
+*Expected Result:*
+The search functionality should return a list of business owners matching the search criteria, displaying the relevant business name or owner name.
+
+*Actual Result:*
+The search results do not match the criteria, show incomplete results."
+Bug,(SP20): System does not send the invoice link to the receiver's phone number via SMS,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T15:11:00.000Z,2025-01-15T15:11:00.000Z,"*Title:*
+System does not send the invoice link to the receiver's phone number via SMS
+
+*Description:*
+The system fails to send the *Invoice Link* to the receivers phone number via SMS after an invoice is generated and ready to be shared. This results in the recipient not receiving the link to view or complete payment for the invoice.
+
+*Precondition:*
+
+# The admin user has successfully created and generated an invoice.
+# The receivers phone number is correctly registered in the system.
+# The system is configured to send SMS notifications for invoices.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Create and generate an invoice for a business owner.
+# Ensure the receiver's phone number is correctly entered and registered.
+# Confirm that the invoice is marked for SMS delivery.
+# Check if the invoice link is sent to the receiver's phone number via SMS.
+
+*Expected Result:*
+The system should send an SMS containing the invoice link to the receivers phone number.
+
+*Actual Result:*
+The system does not send the invoice link via SMS to the receivers phone number."
+Bug,(SP20): Unexpected redirection behaviors of Action Icon buttons in the Business Owners screen,Mohamed Hammad,Muhammed Saeed,2,To Do,2025-01-15T15:05:00.000Z,2025-03-04T10:52:00.000Z,"*Title:*
+Unexpected redirection behaviors of buttons in the Business Owners screen
+
+*Description:*
+The buttons on the *Business Owners* screen exhibit incorrect redirection behaviors:
+
+* The *Statement Icon* button navigates to the *Add Invoice* screen instead of the *Statement* screen.
+* The *Manage* button navigates to the *Statement* screen instead of the *Business Owner Management* screen.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# The user navigates to the *Business Owners* screen.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to the *Business Owners* section.
+# Click the *Statement Icon* button for any listed business owner.
+# Observe the screen navigated to.
+# Click the *Manage* button for the same business owner.
+# Observe the screen navigated to.
+
+*Expected Result:*
+
+# The *Statement Icon* button should navigate to the *Statement* screen, displaying the financial statements for the selected business owner.
+# The *Manage* button should navigate to the *Business Owner Management* screen, allowing the admin to manage the selected business owner.
+
+*Actual Result:*
+
+# The *Statement Icon* button navigates to the *Add Invoice* screen.
+# The *Manage* button navigates to the *Statement* screen."
+Bug,(SP20): No redirection option after successful payment of the invoice,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T14:27:00.000Z,2025-01-16T08:58:00.000Z,"*Title:* No redirection option after successful payment of the invoice
+
+*Description:*
+After a user completes registration and successfully pays the invoice via Visa, the system displays a screen with a *Success* label and a green background. However, there is no confirmation screen providing additional details or an option to redirect the user to continue the login process.
+
+*Precondition:*
+
+# The user has received the invoice via email and paid it successfully using a Visa card.
+# The payment gateway confirms the payment as successful.
+
+*Steps to Reproduce:*
+
+# Complete the registration process as a user.
+# Receive the invoice via email and pay it using a Visa card.
+# Observe the screen displayed after successful payment.
+
+*Expected Result:*
+
+# A confirmation screen should be displayed, showing details such as payment success, invoice details, and a success message.
+# The screen should include an option to redirect the user to the login page or proceed with the next step in the process.
+
+*Actual Result:*
+
+# The screen shows only a *Success* label with a green background.
+# No options are provided to redirect the user to the login page or continue with the process."
+Bug,(SP20): App Checkboxes Not Clearly Visible Leading to Uncalculated Costs in Invoice,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T14:12:00.000Z,2025-01-19T10:57:00.000Z,"*Title:*
+App Checkboxes Not Clearly Visible in Invoice Creation Process
+
+*Description:*
+When the admin creates an invoice, the checkboxes for selecting apps are not clearly visible. This may result in the admin unintentionally missing some app selections, causing those apps to be excluded from the invoice. Consequently, the Preview Invoice and the confirmation email (""Complete your Registration"") do not reflect the correct app costs, leading to incorrect invoice totals and missing cost breakdowns.
+
+----
+
+h3. *Precondition:*
+
+* The admin user has access to the admin portal.
+* Apps are available for selection with prices greater than 0.
+
+----
+
+h3. *Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Business Owners > Select A Business Owner > Click Add Invoice Icon Button*.
+# Attempt to select all available apps from the list (observe the visibility of checkboxes).
+# Generate the invoice and preview it.
+# Submit the invoice and verify the confirmation email (""Complete your Registration"").
+
+----
+
+h3. *Expected Result:*
+
+# The checkboxes for app selection should be clearly visible and actionable.
+# The Preview Invoice should accurately display the selected apps and their associated costs.
+# The confirmation email should include a detailed cost breakdown and the correct total.
+
+----
+
+h3. *Actual Result:*
+
+# Checkboxes for app selection are faint or blend into the background, making them difficult to identify.
+# Some apps may not be selected due to checkbox visibility issues, resulting in missing costs in the Preview Invoice.
+# The confirmation email omits app costs and shows an incorrect total.
+
+----"
+Bug,(SP20): Valid Till field displays incorrect date in the Add Invoice section,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T14:01:00.000Z,2025-01-15T14:01:00.000Z,"*Title:*
+Valid Till field displays incorrect date in the Add Invoice section
+
+*Description:*
+In the *Add Invoice* section under *Business Owners*, the *Valid Till* field incorrectly displays a date calculated as today's date one year. The expected behavior is for the *Valid Till* field to display the *Invoice Date one year*.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# The user navigates to the *Add Invoice* section under *Business Owners*.
+# An invoice date is selected or auto-filled.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to *Business Owners* > *Add Invoice*.
+# Observe the *Valid Till* field after the invoice date is selected or auto-filled.
+
+*Expected Result:*
+The *Valid Till* field should display the date calculated as *Invoice Date one year*.
+
+*Actual Result:*
+The *Valid Till* field displays the date calculated as *todays date one year*, ignoring the invoice date."
+Bug,(SP20): Incorrect title displayed on the Business Owners screen,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T13:41:00.000Z,2025-01-15T13:41:00.000Z,"*Title:*
+Incorrect title displayed on the Business Owners screen
+
+*Description:*
+The title of the *Business Owners* screen is incorrect, which may lead to user confusion or misinterpretation of the screens purpose.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# The user navigates to the *Business Owners* section.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to the *Business Owners* section.
+# Observe the title displayed at the top of the screen.
+
+*Expected Result:*
+The title should clearly indicate the purpose of the screen, such as ""Business Owners List"" or ""Manage Business Owners.""
+
+*Actual Result:*
+The screen displays an incorrect or ambiguous title (JournalEntry. JournalEntryList) that does not align with the intended functionality."
+Bug,(SP20): Localization issues in the Manage Business Owners screen,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T13:35:00.000Z,2025-01-15T13:35:00.000Z,"*Title:*
+Localization issues in the Manage Business Owners screen
+
+*Description:*
+The *Manage Business Owners* screen contains localization issues where text is not displayed correctly or appears in the wrong language, creating confusion for users accessing the screen in different locales.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# The portal is set to a specific language (e.g., non-English) where localization should be applied.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to the *Business Owners* section.
+# Open the *List View* screen.
+# Click the *Manage* button under a subdomain for any listed business owner.
+# Review the text elements on the *Manage Business Owners* screen.
+
+*Expected Result:*
+All text elements on the screen should be displayed in the selected language with accurate translations and formatting.
+
+*Actual Result:*
+
+# Some text remains in English despite the selected language.
+# Certain text elements are missing translations and appear as placeholders (e.g., {{{{key_not_found}}}}).
+# Grammar and formatting errors in the translated text reduce readability."
+Bug,(SP20): Domains Button in Manage Business Owners screen is not actionable,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T13:27:00.000Z,2025-01-15T13:27:00.000Z,"*Title:*
+Domains Button in Manage Business Owners screen is not actionable
+
+*Description:*
+On the *Manage Business Owners* screen accessed via the *List View* in the admin portal, the *Domains Button* is not actionable, preventing further operations related to domains.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# At least one business owner is displayed in the *List View* screen (even if created erroneously).
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to the *Business Owners* section.
+# Open the *List View* screen.
+# Click the *Manage* button under a subdomain for any listed business owner.
+# On the *Manage Business Owners* screen, attempt to click the *Domains Button*.
+
+*Expected Result:*
+The *Domains Button* should be actionable, allowing the admin user to manage domains related to the business owner.
+
+*Actual Result:*
+The *Domains Button* is not actionable and does not respond to user interaction."
+Bug,(SP20): Business Owners List displays a saved business owner despite no creation by the admin user,Mohamed Fathy,Muhammed Saeed,3,To Do,2025-01-15T13:21:00.000Z,2025-01-15T13:21:00.000Z,"*Title:*
+Business Owners List displays a saved business owner despite no creation by the admin user
+
+*Description:*
+The Business Owners (List View) screen shows one saved business owner, although the admin user has not created any business owners yet.
+
+*Precondition:*
+
+# The admin user has access to the admin portal.
+# No business owners have been created by the admin user.
+
+*Steps to Reproduce:*
+
+# Log in to the admin portal as an admin user.
+# Navigate to the *Business Owners* section.
+# Open the *List View* screen for business owners.
+
+*Expected Result:*
+The *List View* screen should display a message indicating that no business owners have been created yet or show an empty list.
+
+*Actual Result:*
+The *List View* screen displays one saved business owner even though no business owners have been created by the admin user."
+Bug,(SP20): ERP Base URL Returns HTTP 301 Status Code After Session Creation,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-14T14:08:00.000Z,2025-01-14T14:10:00.000Z,"h3. *Title: ERP Base URL Returns HTTP 301 Status Code After Session Creation*
+
+*Project/Module:* ERP System
+*Severity:* High
+
+----
+
+h3. *Issue Description*
+
+When attempting to visit the ERP base URL ({{https://testdomain.microtecdev.com:2050/erp}}) after successfully clearing all storage, sessions, and cookies, and creating a new session using Cypress, the system returns an HTTP 301 response status code. This indicates that the URL is being redirected permanently, which causes the navigation to fail.
+
+----
+
+h3. *Steps to Reproduce*
+
+# Clear all storage, sessions, and cookies in the browser.
+# Create a new session using Cypress.
+# Attempt to visit the ERP base URL: {{https://testdomain.microtecdev.com:2050/erp}}.
+# Observe the HTTP response status code.
+
+----
+
+h3. *Expected Behavior*
+
+The ERP base URL should return an HTTP 200 status code and successfully load the ERP login or dashboard page.
+
+----
+
+h3. *Actual Behavior*
+
+The ERP base URL returns an HTTP 301 status code, indicating a permanent redirection, which prevents the page from loading successfully.
+
+----"
+Bug,General: Search Function Sends Two Requests When Copy-Pasting Text in Payment In Screen.,Maha Muhammed,Hossam Saad,2,To Do,2025-01-13T11:19:00.000Z,2025-02-23T15:37:00.000Z,"*Description:*
+In some screens like *Finance App* under the *Payment In Screen*, using the search function with a copy-paste action sends multiple network requests simultaneously. This behavior can lead to performance issues and unnecessary network traffic.
+
+*Steps to Reproduce:*
+
+# Navigate to *Finance App >> Payment In Screen*.
+# Open the *Search* function.
+# Copy a text string from the list view and paste it into the search bar.
+# Monitor the network activity in the developer tools or logs.
+
+*Actual Result:*
+
+* Two network requests are triggered for a single copy-paste action in the search bar.
+
+*Expected Result:*
+
+* A single network request should be sent when performing a copy-paste search action."
+Bug,(SP20): Design Issues in Branches List View,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-06T12:07:00.000Z,2025-01-06T12:07:00.000Z,"*Title: Design Issues in Branches List View*
+
+*Project/Module:* ERP System  Branch Management
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+The *Branches List View* in the ERP system displays several *design inconsistencies* and *misaligned components*, leading to poor user experience and visual clutter. This affects the usability and readability of the branch data.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to *Branch Management* or *Organization Setup*.
+# Open the *Branches List View*.
+# Observe the table structure, row alignment, column headers, and spacing between elements.
+
+----
+
+*Expected Behavior:*
+
+* The Activate / Deactivate Text should be centered in its containing component
+* Column headers and table rows should be *aligned properly*.
+* Adequate spacing and padding should be applied for *clear readability*.
+* Design should follow the *standard table/list view design* used across the ERP system.
+
+*Actual Behavior:*
+
+* The Activate / Deactivate Text is not centered in its containing component
+* Uneven padding between rows, leading to a *cluttered view*.
+* *Extra margins* between sections, causing unnecessary white space.
+* Some elements overlap or appear *out of grid alignment*.
+* *Filter/search bar* misalignment with inconsistent spacing from the list table.
+
+----"
+Bug,(SP20): Design Inconsistency in Edit Branch Dialog,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-06T12:01:00.000Z,2025-01-06T12:02:00.000Z,"*Title: Design Inconsistency in Edit Branch Dialog*
+
+*Project/Module:* ERP System  Branch Management
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+The *Edit Branch* dialog displays a *different design and layout* compared to the standard dialog forms used across the ERP system. This inconsistency affects the user experience and disrupts uniformity in the system's UI/UX design.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to *Branch Management*
+# Click on *Edit* for any existing branch.
+# Observe the layout, form fields, spacing, and buttons in the *Edit Branch Dialog*.
+# Compare this with other dialog forms (e.g., Treasury, Customer, Vendor dialogs).
+
+----
+
+*Expected Behavior:*
+
+* The Edit Branch dialog should adhere to the *standard form design* applied consistently across the ERP system.
+* Form fields, buttons, and section spacing should match the design patterns used in *other module dialogs*.
+* Uniformity in design improves usability and ensures a *seamless experience* for users.
+
+*Actual Behavior:*
+
+* The Edit Branch dialog has *misaligned form fields*, irregular spacing, and a *different button layout* compared to other dialog forms.
+* The overall design *deviates from the standard* dialog forms across the ERP system, resulting in an inconsistent look and feel."
+Bug,(SP20): Selected Items Unchecked When Navigating Pages in Item Code Advanced Search Dialog,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-06T11:37:00.000Z,2025-01-06T11:38:00.000Z,"*Title: Selected Items Unchecked When Navigating Pages in Item Code Advanced Search Dialog*
+
+*Project/Module:* ERP System  Sales (Price Policy)
+*Severity:* High
+
+----
+
+*Issue Description:*
+When using the *Advanced Search Dialog* to select item codes in the *Price Policy* screen (Sales app), selected items are *unchecked* if the user navigates between pages in the dialog. This results in *data loss and ambiguity* during item selection, leading to potential errors in policy configuration.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to *Sales ? Price Policy ? Add/Edit Price Policy*.
+# Click on *Item Code* to open the *Advanced Search Dialog*.
+# Select multiple item codes from the first page.
+# Navigate to the next page without clicking ""Confirm.""
+# Return to the previous page.
+
+----
+
+*Expected Behavior:*
+
+* Selected items should *remain checked and persist* when navigating between pages in the Advanced Search Dialog.
+* Users should be able to *select multiple items across multiple pages* without losing prior selections.
+
+*Actual Behavior:*
+
+* Selected items from previous pages are *unchecked* when the user navigates to a different page.
+* Users experience *ambiguity and potential errors* as previously selected items do not appear in the final selection after confirming.
+
+----"
+Bug,(SP20): Show/Hide Columns in Payment Term Displays Only Actions Column When All Options Are Unchecked,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-05T16:48:00.000Z,2025-01-05T16:48:00.000Z,"h4. *Title:*
+
+Show/Hide Columns in Payment Term Displays Only Actions Column When All Options Are Unchecked
+
+----
+
+h4. *Description:*
+
+In the Payment Term section of the Finance app, the *Show/Hide Columns* functionality behaves incorrectly. When all column options are unchecked, the system displays only the ""Actions"" column, which should also be hidden along with the other columns.
+
+----
+
+h4. *Precondition:*
+
+# Access to the Finance app and the Payment Term section.
+# A table with configurable columns and a ""Show/Hide Columns"" option.
+
+----
+
+h4. *Steps to Reproduce:*
+
+# Navigate to the Payment Term section in the Finance app.
+# Click on the *Show/Hide Columns* option.
+# Uncheck all available column options.
+# Observe the table after closing the *Show/Hide Columns* configuration.
+
+----
+
+h4. *Expected Result:*
+
+When all column options are unchecked, the table should display the descriptive columns [Code or Name), including the ""Actions"" column.
+
+----
+
+h4. *Actual Result:*
+
+The table displays the ""Actions"" column, even when all column options are unchecked in the *Show/Hide Columns* functionality."
+Bug,(SP20): Unposted Payment Out Displayed in Recent Outgoing Transactions,Amr Yousry,Muhammed Saeed,3,To Do,2025-01-05T15:03:00.000Z,2025-01-05T15:21:00.000Z,"*Title: Unposted Payment Out Displayed in Recent Outgoing Transactions*
+
+*Project/Module:* ERP System  Finance (Dashboard)
+*Severity:* High
+
+----
+
+*Issue Description:*
+In the *Finance App Dashboard*, *unposted Payment Out* transactions are incorrectly displayed under the *Recent Outgoing Transactions* section. This misclassification can lead to confusion and inaccurate financial reporting.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to *Finance ? Payments ? Payment Out*.
+# Create a new *Payment Out* transaction and leave it in the *unposted* state.
+# Go to the *Finance Dashboard*.
+# Check the *Recent Outgoing Transactions* section.
+
+----
+
+*Expected Behavior:*
+
+* *Unposted Payment Out* transactions should not appear in the *Recent Outgoing Transactions* section.
+* Payment In transactions should only appear under *Incoming Transactions* if posted.
+
+*Actual Behavior:*
+
+* The *unposted Payment Out* transaction incorrectly appears in the *Outgoing Transactions* list."
+Bug,(SP20): Misaligned Buttons in Subdomain Cards – My Subscription Page,Maha Muhammed,Muhammed Saeed,2,To Do,2025-01-05T11:18:00.000Z,2025-01-05T11:19:00.000Z,"*Title: Misaligned Buttons in Subdomain Cards  My Subscription Page*
+
+*Project/Module:* ERP System  My Subscription Page
+*Severity:* High
+
+----
+
+*Issue Description:*
+On the *My Subscription* page, the action buttons (e.g., Renew, Cancel, Edit) within each subdomain card are *misaligned*. The buttons do not maintain a consistent horizontal alignment, resulting in an uneven and unprofessional layout.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to the *My Subscription* page in the ERP system.
+# Review the subdomain cards displayed under the active subscription section.
+# Observe the action buttons within each card.
+
+----
+
+*Expected Behavior:*
+
+* All buttons within the subdomain cards should be *uniformly aligned* horizontally.
+* Buttons should maintain consistent spacing and positioning across all subdomain cards.
+
+*Actual Behavior:*
+
+* Buttons are *misaligned*, appearing at varying heights or distances from the edges of the subdomain card.
+* The page layout appears inconsistent and visually cluttered."
+Bug,(SP20): Excessive Padding and Margins in Bank Account Statement Screen,Maha Muhammed,Muhammed Saeed,3,To Do,2025-01-05T10:51:00.000Z,2025-01-05T10:53:00.000Z,"*Title: Excessive Padding and Margins in Bank Account Statement Screen*
+
+*Project/Module:* Finance App  Bank Account Statement Screen
+*Severity:* Low (UI/UX)
+
+----
+
+*Issue Description:*
+The *Bank Account Statement* screen in the Finance module contains excessive padding and margins between various content sections and panels. This results in a *disorganized layout*, causing unnecessary scrolling and reducing overall readability and efficiency.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to the *Finance* module.
+# Open the *Bank Account Statement* screen.
+# Observe the layout and spacing between sections, content blocks, and data panels.
+
+----
+
+*Expected Behavior:*
+
+* Panels and content sections should be aligned with consistent and minimal padding/margin.
+* The layout should maximize available screen space for readability without excessive white space.
+
+*Actual Behavior:*
+
+* Unnecessary padding and margins are present between panels and data rows.
+* Excessive white space leads to reduced visibility of critical data, requiring additional scrolling."
+Bug,Incorrect Success Message After Editing Account,Mahmoud Zaki,Hossam Saad,3,To Do,2024-12-31T14:29:00.000Z,2025-01-12T13:09:00.000Z,"*Description:*
+In the *Edit Mode* of the Chart of Account, the success message displayed upon saving changes is incorrect. It shows *""Account Updated Successfully""* instead of the more contextually accurate message *""Account Modified Successfully.""*
+
+*Steps to Reproduce:*
+
+# Navigate to *Accounting App >> Master Data >> Chart of Account*.
+# Open an account in *Edit Mode*.
+# Make any changes to the account details.
+# Save the changes.
+
+*Actual Result:*
+
+* The success message displayed reads *""Account Updated Successfully.""*
+
+*Expected Result:*
+
+* The success message should read *""Account Modified Successfully""* to align with the action performed."
+Bug,Exported Sheets Contain Blank Columns in Chart of Account,Maha Muhammed,Hossam Saad,3,To Do,2024-12-31T13:23:00.000Z,2025-03-03T11:34:00.000Z,"*Description:*
+When exporting data from the *Chart of Account list view*, the exported Excel and PDF sheets include blank columns, making the exported data incomplete and confusing for users.
+
+*Steps to Reproduce:*
+
+# Navigate to *Accounting App >> Master Data >> Chart of Account*.
+# Click the *Export* button and select either *Excel* or *PDF* format.
+# Open the exported file.
+
+*Actual Result:*
+
+* The exported sheets contain blank columns that do not correspond to any data from the Chart of Account.
+
+*Expected Result:*
+
+* The exported sheets should include only columns with relevant data populated as displayed in the *Chart of Account* list view."
+Bug,"(SP20):Return Purchase Invoice Add Screen, The System Generated Batch is Not Displayed.  ",Mahmoud Zaki,Yassmin,3,To Do,2024-12-31T11:43:00.000Z,2025-01-12T13:09:00.000Z,"In Case Item Type Was No Tracking and Has expiry Was True.
+
+*Expected Result:* The System Generated Batch Should Displayed in Batch No Field.
+
+*Actual Result:* The System Generated Batch is Not Displayed as in attach (*image (4).png*)."
+Bug,(SP20):The Redirect of Return Purchase Invoice in Journal Entry List View Not Working.,Mahmoud Zaki,Yassmin,3,To Do,2024-12-31T11:34:00.000Z,2025-02-06T14:33:00.000Z,"When I Click on Rpiv_03, 
+
+*Expected Result:* The System Should Redirect The User To The Return Purchase Invoice Screen.
+
+*Actual Result:* The Redirect of Return Purchase Invoice in Journal Entry List > View Not Working."
+Bug,No Validation for Negative Rate Values in Edit Mode of Journal Entry,Mahmoud Zaki,Hossam Saad,3,To Do,2024-12-30T14:37:00.000Z,2025-01-12T13:09:00.000Z,"*Description:*
+In the *Edit Mode* of journal entries, negative values can be entered in the *Rate* field without any validation or error message. This can lead to invalid financial records being created.
+
+*Steps to Reproduce:*
+
+# Navigate to *Transactions >> Journal Entry*.
+# Open an existing journal entry in *Edit Mode*.
+# Enter a negative value in the *Rate* field.
+# Attempt to save the changes.
+
+*Actual Result:*
+
+* The system allows saving the journal entry with a negative rate value, with no error or validation.
+
+*Expected Result:*
+
+* The system should validate the *Rate* field to prevent negative values and display an appropriate error message, such as:
+** ""Rate cannot be a negative value."""
+Bug,"(SP20):Customer Definition List View Screen, The Bug of Export Data With Filtered data",Maha Muhammed,Yassmin,3,To Do,2024-12-30T12:52:00.000Z,2025-01-12T13:09:00.000Z,"When I search with any data and export it,
+
+*Expected Result:* The Exported file should contain only the filtered data.
+
+*Actual Result:* The Exported file contain all data, as in attach (The Bug of Export Data With Filter in Customer Definition.mp4)."
+Bug,(SP20):Customer Category Name Field Accept More Than 50 Characters,Muhammed Nabil,Yassmin,3,To Do,2024-12-30T12:27:00.000Z,2025-03-02T23:18:00.000Z,"As BR03: As a user, I must enter the name of the customer category, which is a mandatory field with a capacity of 50 characters
+
+*Expected Result:* Customer Category Name Shouldnt Accept More Than 50 Characters with validation message.
+
+*Actual Result:* Customer Category Name Accept More Than 50 Character"
+Bug,(SP20):Customer Category Search Doesn't Work With All Columns,Mohamed Magdy,Yassmin,3,To Do,2024-12-30T12:23:00.000Z,2025-03-02T23:22:00.000Z,"Customer Category List View Screen, Search Doesn't Work With All Columns"
+Bug,Warning message for required fields in Opening Balance Journal Entry is unclear in both Arabic and English.,Mahmoud Zaki,Hossam Saad,3,Code review,2024-12-28T13:14:00.000Z,2025-01-12T13:10:00.000Z,"*Description:*
+The warning message displayed for required fields is not clear in either *Arabic* or *English*. This makes it difficult for users to understand which fields are missing or what actions are needed to proceed.
+
+*Steps to Reproduce:*
+
+# Navigate to the *Accounting App*.
+# Open the *Opening Balance Journal Entry* module.
+# Click *Create* button
+# Attempt to save a journal entry without filling in all the required fields.
+
+*Actual Result:*
+
+* A warning message appears, but its content is unclear in both Arabic and English, failing to guide the user effectively.
+
+*Expected Result:*
+
+* The warning message should clearly indicate which fields are missing or invalid.
+* The message should be displayed in a clear and understandable format in both Arabic and English, based on the selected language."
+Bug,SP 20: Error Message Not Handled for Duplicate Serial in Stock Out,Hager Mostafa,Tasneem Fathy,2,To Do,2024-12-28T05:21:00.000Z,2025-01-12T13:10:00.000Z,"*Description:*
+When the user adds the same serial in the *Stock Out* screen, the system does not handle the error message properly. Instead of providing a clear validation error, the system behavior becomes unpredictable, which can lead to user confusion and data entry issues.
+
+*Steps to Reproduce:*
+
+# Navigate to the *Stock Out* screen.
+# Add a serial in the *Serial* field.
+# Attempt to add the same serial again in another line.
+# Observe the system response.
+
+*Expected Result:*
+The system should display a clear error message, such as ""Duplicate serials are not allowed,"" and prevent the addition of duplicate serials in the Stock Out entry.
+
+*Actual Result:*
+The system does not display an appropriate error message, leading to inconsistent behavior or acceptance of duplicate serials."
+Bug,Sidebar Menu Not Responsive in Arabic Mode,Mahmoud Zaki,Hossam Saad,3,To Do,2024-12-26T11:40:00.000Z,2025-01-12T13:10:00.000Z,"*Description:*
+In the *Arabic Mode*, the sidebar menu in the application becomes unresponsive, preventing users from accessing the menu options effectively. This issue hinders navigation for Arabic-speaking users.
+
+*Steps to Reproduce:*
+
+# Switch the application language to *Arabic*.
+# Navigate to *Reports >> Cost center reports*.
+# Attempt to interact with the sidebar menu options.
+
+*Actual Result:*
+
+* The sidebar menu does not respond to clicks or hover actions in *Arabic Mode*.
+
+*Expected Result:*
+
+* The sidebar menu should function normally in *Arabic Mode*, allowing users to click on and access all menu options seamlessly."
+Bug,(SP20)General: Unexpected Behavior in Show/Hide Column Functionality,Mahmoud Zaki,Muhammed Saeed,3,To Do,2024-12-26T10:43:00.000Z,2025-01-23T10:46:00.000Z,"h3. *Title: Unexpected Behavior in Show/Hide Column Functionality*
+
+*Project/Module:* ERP System - List View (Show/Hide Column)
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+The Show/Hide column functionality exhibits unexpected behavior when all columns are unchecked. Despite unchecking all options, all columns remain visible in the list view. Additionally, descriptive columns such as *Code* or *Name* should not be part of the hideable options.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to any list view that supports Show/Hide column functionality (e.g., Return Purchase Invoice, Payment In, etc.).
+# Click on the Show/Hide columns option.
+# Uncheck all available column options.
+# Observe the list view.
+
+----
+
+*Expected Behavior:*
+
+* Unchecking all columns should hide all columns in the list view.
+* Descriptive columns (e.g., *Code* or *Name*) should remain visible at all times and should not be available in the hideable options.
+
+*Actual Behavior:*
+
+* Unchecking all columns results in all columns still being displayed.
+* Descriptive columns that are critical for identification (such as *Code* or *Name*) appear in the list of hideable options."
+Bug,Current Date in Cost Center Report Does Not Align with Current Financial Year,Mahmoud Zaki,Hossam Saad,3,To Do,2024-12-26T10:43:00.000Z,2025-01-12T13:10:00.000Z,"*Description:*
+In the *Reports >> Cost Center Report*, the current date displayed does not correspond to the current date of the financial year. This misalignment can lead to confusion when reviewing reports tied to the financial calendar.
+
+*Steps to Reproduce:*
+
+# Navigate to the Accounting Module.
+# Go to *Reports >> Cost Center Report*.
+# Observe the current date displayed in the report header or filter fields.
+# Compare it to the current date of the financial year.
+
+*Actual Result:*
+
+* The current date displayed does not match the date of the current financial year.
+
+*Expected Result:*
+
+* The current date in the *Cost Center Report* should reflect the current date as per the financial year set in the system."
+Bug,"(SP20): General: Descriptive Columns (e.g., Code, Name) Can Be Unchecked in Show/Hide Column Feature",Maha Muhammed,Muhammed Saeed,2,To Do,2024-12-25T10:47:00.000Z,2024-12-25T14:26:00.000Z,"h3. *Title*: Descriptive Columns (e.g., Code, Name) Can Be Unchecked in Show/Hide Column Feature
+
+*Module*: Payment In / Payment out/ Any Grid with Show/Hide Column Feature
+*Severity*: High
+*Priority*: Critical
+*Status*: Open
+
+----
+
+h3. *Description*:
+
+The current implementation of the Show/Hide column functionality allows users to uncheck critical descriptive columns, such as ""Code"" and ""Name."" This results in the inability to identify records, leading to operational inefficiencies and potential errors when performing actions like editing or deleting records.
+
+----
+
+h3. *Steps to Reproduce*:
+
+# Navigate to a grid (e.g., Business Owner List or Invoice List) with the Show/Hide column option.
+# Click on the ""Show/Hide Columns"" button.
+# Uncheck essential descriptive columns like ""Code"" or ""Name.""
+# Observe that the grid no longer displays identifying information for each row, but the ""Action"" column (View/Edit/Delete) remains active.
+
+----
+
+h3. *Expected Result*:
+
+* *Critical descriptive columns (e.g., ""Code,"" ""Name"") should be fixed and unchangeable.*
+* *Users should not be able to uncheck these columns.*
+* *If the user attempts to uncheck them, a validation message should appear:*
+*""Essential descriptive columns cannot be hidden to preserve record identification.""*
+
+----
+
+h3. *Actual Result*:
+
+* Descriptive columns are unchecked without restriction.
+* The grid displays rows with only the ""Action"" column, making it impossible to distinguish records.
+
+----"
+Bug,(SP20):  Incorrect Scrollbar Position in Arabic Language Mode,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-24T15:21:00.000Z,2024-12-24T15:21:00.000Z,"*Bug Report: Incorrect Scrollbar Position in Arabic Language Mode*
+
+*Project/Module:* ERP System - UI/Localization
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+When the ERP system language is set to Arabic, the scrollbar remains on the right side of the screen. This behavior contradicts the standard RTL (Right-to-Left) interface expected in Arabic, where the scrollbar should appear on the left side.
+
+----
+
+*Steps to Reproduce:*
+
+# Switch the ERP system language to Arabic.
+# Navigate to any module with a vertical scrollbar (e.g., Item Definition, Payment In/Out).
+# Observe the position of the scrollbar.
+
+----
+
+*Expected Behavior:*
+
+* The scrollbar should appear on the left side in RTL mode (Arabic).
+
+*Actual Behavior:*
+
+* The scrollbar remains on the right side, following the LTR (Left-to-Right) standard.
+
+----
+
+*Impact Analysis:*
+
+* This inconsistency disrupts the user experience and may cause usability issues for Arabic-speaking users.
+* It reduces the overall localization quality and professionalism of the system."
+Bug,(SP:20): Vendor Definition List View: Export PDF Report without Text Formatting,Maha Muhammed,Yassmin,3,To Do,2024-12-24T14:59:00.000Z,2025-01-12T13:10:00.000Z,"*Title:* Vendor Category List View: Export PDF Report without Text Formatting
+
+*Expected Result:* 
+
+# The exported PDF report should include proper text formatting, such as font size, font style, and alignment.
+# When I export the data with Arabic language, it exported with English language. 
+
+
+
+*Actual Result:* 
+
+# The exported PDF report may have inconsistent or missing text formatting.
+# When I export the data with Arabic language, it should exported with Arabic language."
+Bug,(SP20): ERP Side Slider - Modules Not Actionable in Arabic Mode When The Side Slider is Collapsed,Maha Muhammed,Muhammed Saeed,3,Code review,2024-12-24T11:49:00.000Z,2024-12-26T10:25:00.000Z,"*Title: ERP Side Slider - Modules Not Actionable in Arabic Mode When The Side Slider is Collapsed*
+
+*Project/Module:* ERP System - Side Slider Navigation
+*Severity:* High
+
+----
+
+*Issue Description:*
+When the ERP system is set to Arabic mode, the side slider containing module navigation options becomes unresponsive. Hovering or clicking on the module options does not trigger any actions, preventing users from navigating to different modules.
+
+----
+
+*Steps to Reproduce:*
+
+# Switch the ERP system language to Arabic.
+# Hover over or click on the module options in the side slider.
+# Observe that the modules do not respond or navigate to the respective screens.
+
+----
+
+*Expected Behavior:*
+
+* Module options in the Collapsed side slider should be clickable and hoverable, allowing users to navigate to different ERP sections regardless of the language setting.
+
+*Actual Behavior:*
+
+* In Arabic mode, the Collapsed side slider module options are unresponsive to hover or click actions, preventing users from accessing critical ERP modules."
+Bug,(SP20): Handle Buttons Design in Vendor Category Add & Edit screens.,Maha Muhammed,Yassmin,3,To Do,2024-12-24T10:48:00.000Z,2025-01-29T12:14:00.000Z,"When I Minimize The Screens In Vendor Category Add & Edit Screens With AR Language, The Design of Buttons Should be Handled"
+Bug,(SP20): Bank Definition Edit Screen Does Not Display Actual Balance,Maha Muhammed,Muhammed Saeed,2,Code review,2024-12-24T10:32:00.000Z,2024-12-26T08:57:00.000Z,"*Title: Bank Definition Edit Screen Does Not Display Actual Balance*
+
+*Project/Module:* ERP System - Bank Definition
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+The Edit screen for Bank Definition does not display the actual balance of the selected bank, even though the correct balance is successfully shown in the View screen. This discrepancy causes confusion and may lead to incorrect updates during the editing process.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to Finance App - Master Data
+# Navigate to the Bank Definition module.
+# Select a bank and view its details.
+# Note the actual balance displayed in the View screen.
+# Click ""Edit"" to modify the same bank record.
+# Observe the absence of the actual balance on the Edit screen.
+
+----
+
+*Expected Behavior:*
+
+* The Edit screen should display the actual balance of the bank, matching the value shown in the View screen.
+
+*Actual Behavior:*
+
+* The Edit screen does not display any balance information, despite the correct balance appearing in the View screen."
+Bug,(SP20): Treasury Related Currency Not Displayed in Treasury Statements,Muhammed Nabil,Muhammed Saeed,2,Code review,2024-12-24T09:28:00.000Z,2024-12-26T12:41:00.000Z,"*Title: Treasury Related Currency Not Displayed in Treasury Statements*
+
+*Project/Module:* ERP System - Treasury Statements - Finance App
+*Severity:* High
+
+----
+
+*Issue Description:*
+The system fails to display the treasury-related currency in treasury statements. When users generate or view treasury statements, the currency associated with the treasury account is missing, leading to confusion and potential misinterpretation of financial data.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to Finance App
+# Navigate to the Treasury Statement module.
+# Generate a treasury statement for a specific treasury account with valid Date Period.
+# Review the statement details.
+# Observe the absence of the treasury-related currency in the generated statement.
+
+----
+
+*Expected Behavior:*
+
+* The treasury statement should display the currency associated with the selected treasury account.
+* All relevant currency information should be clearly visible for accurate financial interpretation.
+
+*Actual Behavior:*
+
+* The generated treasury statement does not display the treasury-related currency.
+* Users cannot verify the currency in which treasury amounts are calculated, leading to ambiguity in financial reports."
+Bug,(SP20): Export Report Not Applying Filters in Payment In,Maha Muhammed,Muhammed Saeed,3,In Progress,2024-12-23T15:37:00.000Z,2024-12-24T18:50:00.000Z,"*Bug Report: Export Report Not Applying Filters in Payment In*
+
+*Project/Module:* Payment In - Export Report
+*Severity:* Medium
+
+----
+
+*Issue Description:*
+When exporting Payment In reports (PDF or Excel), the applied filters are not reflected in the exported file. The exported report contains the full list of records instead of the filtered subset.
+
+----
+
+*Steps to Reproduce:*
+
+# Navigate to the Payment In module and apply filters (e.g., by date, hub, or status).
+# Click the ""Export"" button to generate a PDF or Excel report.
+# Open the exported file and review the contents.
+
+----
+
+*Expected Behavior:*
+
+* The exported report should reflect the applied filters and only include the records matching the selected criteria.
+
+*Actual Behavior:*
+
+* The exported report ignores the applied filters and displays all records in the system.
+
+
+
+----"
+Bug,(SP20): Payment Method Deletion Allowed Despite Existing Transactions,Amr Yousry,Muhammed Saeed,2,To Do,2024-12-22T15:06:00.000Z,2024-12-26T10:36:00.000Z,"* *Title*: System Allows Deletion of Payment Method Used in Transactions
+
+----
+
+* *Description*:
+The system permits the deletion of payment methods that are already associated with existing transactions. This can lead to data integrity issues and inconsistencies in financial records.
+
+----
+
+* *Preconditions*:
+** At least one payment method is linked to completed transactions.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to *Finance App > Master Data > Payment Methods*.
+*# Select a payment method that has been used in past transactions.
+*# Click the *Delete* button.
+*# Confirm the deletion.
+
+----
+
+* *Expected Results*:
+** The system should display a validation message preventing deletion, such as:
+**""This payment method cannot be deleted as it is associated with existing transactions.""*
+
+----
+
+* *Actual Results*:
+** The payment method is deleted without any warning or validation, even if linked to transactions."
+Bug,(SP20):  Incorrect Actual Balance Displayed in Treasury Definition,Maha Muhammed,Muhammed Saeed,2,To Do,2024-12-22T12:59:00.000Z,2024-12-22T12:59:00.000Z,"* *Title*: Incorrect Actual Balance Displayed in Treasury Definition View/Edit Screen
+
+----
+
+* *Description*:
+When a user creates a new treasury with an opening balance and saves it successfully, the *actual balance* displayed in the *View/Edit* screen is incorrect. The system shows an unexpected value, even though no transactions have been made yet.
+
+----
+
+* *Preconditions*:
+** User has access to the Treasury Definition module.
+** A new treasury is being created with an opening balance.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Treasury Definition* module.
+*# Click on *Add New Treasury*.
+*# Enter treasury details and provide an *opening balance*.
+*# Click *Save*.
+*# Reopen the saved treasury by clicking *Edit* or *View*.
+*# Observe the *Actual Balance* displayed.
+
+----
+
+* *Expected Results*:
+** The actual balance should match the opening balance immediately after creation, as no transactions have been conducted.
+
+----
+
+* *Actual Results*:
+** The system displays an incorrect or unexpected actual balance that does not reflect the opening balance."
+Bug,(SP20): Padding Issue in Treasury Definition Confirmation Dialog,Muhammed Nabil,Muhammed Saeed,3,Code review,2024-12-22T11:21:00.000Z,2024-12-25T13:50:00.000Z,"* *Title*: Padding Issue in Treasury Definition Confirmation Dialog
+
+----
+
+* *Description*:
+The confirmation dialog that appears in the *Treasury Definition Add/Edit* screen, with the message:
+{{""The opening balance of journal not equal treasury opening balance, do you want to Continue?""}}
+has a *padding issue*. The description text is too close to the action buttons (Cancel and Save), causing poor readability and inconsistent UI alignment.
+
+----
+
+* *Preconditions*:
+** Treasury definition data is being added or edited.
+** A discrepancy exists between the journal opening balance and the treasury opening balance.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Treasury Definition* module.
+*# Click to *Add* or *Edit* an existing treasury definition.
+*# Fill all required data
+*# Enter values that trigger a mismatch between the journal opening balance and the treasury opening balance.
+*# Click *Save*.
+*# Observe the confirmation dialog that appears.
+
+----
+
+* *Expected Results*:
+** The description text in the confirmation dialog should have sufficient padding from the action buttons (Cancel and Save), ensuring proper readability and visual separation.
+
+----
+
+* *Actual Results*:
+** The description text is very close to the action buttons, making the dialog look cluttered and reducing readability."
+Bug,(SP20): Company Activation Status Not Retained,Maha Muhammed,Muhammed Saeed,2,To Do,2024-12-19T13:18:00.000Z,2024-12-19T13:18:00.000Z,"* *Title*: Company Activation Status Not Retained After Re-entering Edit Company Screen
+
+----
+
+* *Description*:
+The activation status of companies in the *Company List View* and *Edit Company* screen does not persist after changes are made and the user exits and re-enters the screen. The status reverts to its previous state when the user revisits the *Edit Company* screen.
+
+----
+
+* *Preconditions*:
+** There are companies listed in the *Company List View*.
+** The user has access to the *Edit Company* screen.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Company List View*.
+*# Select a company and click *Edit* to access the *Edit Company* screen.
+*# Change the activation status of the company.
+*# Click *Save* to save the changes.
+*# Exit the *Edit Company* screen.
+*# Re-enter the *Edit Company* screen for the same company.
+
+----
+
+* *Expected Results*:
+** The activation status should be correctly saved and displayed upon re-entering the *Edit Company* screen.
+
+----
+
+* *Actual Results*:
+** The activation status reverts to its previous state, disregarding the changes made and saved by the user.
+* *Severity*: High
+* *Priority*: High"
+Bug,(SP20): Branch Activation Status Not Retained in Branches List View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T13:12:00.000Z,2024-12-19T13:12:00.000Z,"* *Title*: Branch Activation Status Not Retained in Branches List View After Re-entering Edit Company Screen
+
+----
+
+* *Description*:
+In the *Edit Company* screen, the activation status of branches in the *Branches* tab does not persist after exiting and re-entering the screen. Despite saving changes, the status reverts to its previous state when the user revisits the *Edit Company* screen.
+
+----
+
+* *Preconditions*:
+** A company with branches exists.
+** The user has access to the *Edit Company* screen and the *Branches* tab.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Edit Company* screen.
+*# Go to the *Branches* tab.
+*# Change the activation status of one or more branches.
+*# Click *Save* to save the changes.
+*# Exit the *Edit Company* screen.
+*# Re-enter the *Edit Company* screen and navigate to the *Branches* tab.
+
+----
+
+* *Expected Results*:
+** The activation status changes for branches should be saved and displayed correctly upon re-entering the *Edit Company* screen.
+
+----
+
+* *Actual Results*:
+** The activation status reverts to its previous state, ignoring the changes made and saved by the user."
+Bug,(SP20): Company Name Text Overflows in Manage Companies List View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T13:01:00.000Z,2024-12-19T13:02:00.000Z,"* *Title*: Text Overflow in Company Name Column in Manage Companies List View
+
+----
+
+* *Description*:
+In the *Manage Companies* list view, the text in the *Company Name* column does not wrap within its designated cell. Instead, it overflows into the adjacent cell, disrupting the layout and causing readability issues.
+
+----
+
+* *Preconditions*:
+** The user has access to the *Manage Companies* list view.
+** There is at least one company with a long name in the list.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Manage Companies* list view.
+*# Observe the *Company Name* column for companies with long names.
+
+----
+
+* *Expected Results*:
+** The text in the *Company Name* column should wrap within its cell, ensuring it does not overlap or extend into adjacent cells.
+
+----
+
+* *Actual Results*:
+** The text in the *Company Name* column overflows into adjacent cells, making the interface visually cluttered and hard to read."
+Bug,(SP20): Missing Navigation Menu Link in Edit Company Menu to Manage Companies List View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T12:52:00.000Z,2024-12-19T12:52:00.000Z,"* *Title*: Missing Navigation Link in Edit Company Menu to Manage Companies List View
+
+----
+
+* *Description*:
+In the *Edit Company* screen, the menu does not include a navigation link to return to the *Manage Companies* list view. This forces users to manually navigate back, reducing usability and efficiency.
+
+----
+
+* *Preconditions*:
+** The user is logged in and has access to the *Edit Company* screen.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Manage Companies* list view.
+*# Open the *Edit Company* screen for any company.
+*# Look through the menu links in the *Edit Company* screen.
+
+----
+
+* *Expected Results*:
+** The menu Links in the *Edit Company* screen should include a link that navigates back to the *Manage Companies* list view.
+
+----
+
+* *Actual Results*:
+** No link to the *Manage Companies* list view is present in the *Edit Company* menu Links."
+Bug,(SP20): Export Functionality Not Working in Company Branches List View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T12:42:00.000Z,2024-12-19T12:42:00.000Z,"* *Title*: Export Button in Company Branches List View Does Not Function
+
+----
+
+* *Description*:
+In the *Company Edit* screen under the *Branches* tab, the *Export* button in the list view fails to export any data. Neither the *PDF* nor the *Excel* format generates a file when the button is clicked.
+
+----
+
+* *Preconditions*:
+** The user is logged in and has access to the *Edit Company* screen.
+** The user is on the *Branches* tab and the list view contains data.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Edit Company* screen.
+*# Go to the *Branches* tab.
+*# Ensure there are branches listed in the list view.
+*# Click the *Export* button and select either *PDF* or *Excel*.
+*# Observe the behavior.
+
+----
+
+* *Expected Results*:
+** Clicking the *Export* button should generate and download a file containing the data in the list view in the selected format (PDF or Excel).
+
+----
+
+* *Actual Results*:
+** No file is generated or downloaded when the *Export* button is clicked.
+** There is no visible error message or indication of failure."
+Bug,(Sp20): Unable to Save New Branch in Edit Company Screen,Maha Muhammed,Muhammed Saeed,2,To Do,2024-12-19T12:18:00.000Z,2024-12-19T12:19:00.000Z,"* *Title*: Errors Prevent Saving a New Branch in Edit Company Screen
+
+----
+
+* *Description*:
+When attempting to add a new branch in the *Edit Company* screen under the *Branches* tab, filling all required fields, and clicking the *Save* button, the system displays two error pop-ups:
+** _""Error: The NameAr field is required""_
+** _""Error: The NameEn field is required""_
+Despite these fields being filled, the branch data is not saved.
+
+----
+
+* *Preconditions*:
+** The user is logged in and has access to the Edit Company screen.
+** The user is on the *Branches* tab of a specific company.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Edit Company* screen.
+*# Go to the *Branches* tab.
+*# Click *Add New Branch* and fill in all required fields, including _NameAr_ and _NameEn_.
+*# Click the *Save* button.
+*# Observe the error messages and behavior.
+
+----
+
+* *Expected Results*:
+** The system should validate the input fields.
+** If all required fields are filled, the branch should be saved successfully without error pop-ups.
+
+----
+
+* *Actual Results*:
+** Two error pop-ups are displayed:
+*** _""Error: The NameAr field is required""_
+*** _""Error: The NameEn field is required""_
+** The branch data is not saved.
+* {noformat}{
+ ""messageCode"": 4001,
+ ""message"": ""FluentValidation"",
+ ""correlationId"": ""4a498904-d091-4796-a79d-abbf4094d3c8"",
+ ""validationErrors"": [
+ {
+ ""key"": ""NameAr"",
+ ""errorMessages"": [
+ ""The NameAr field is required.""
+ ]
+ },
+ {
+ ""key"": ""NameEn"",
+ ""errorMessages"": [
+ ""The NameEn field is required."",
+ ""BusinessOwners.Required""
+ ]
+ }
+ ]
+}{noformat}
+
+* *Severity*: High
+* *Priority*: Critical"
+Bug,(SP20): Missing Column Sorting in Manage Companies List View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T12:01:00.000Z,2024-12-19T12:01:00.000Z,"* *Title*: Manage Companies List View Lacks Column Sorting
+
+----
+
+* *Description*:
+The Manage Companies list view does not provide column sorting functionality. Users are unable to sort data by any column (e.g., Company Name, Country, Currency). This limitation makes it challenging to organize and analyze data effectively.
+
+----
+
+* *Preconditions*:
+** The user is logged in and has access to the Manage Companies module.
+** The list view contains data across multiple columns.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the Manage Companies list view.
+*# Attempt to click on any column header to sort the data.
+*# Observe the system behavior.
+
+----
+
+* *Expected Results*:
+** Clicking on a column header should sort the data in ascending order.
+** Clicking the header again should toggle sorting to descending order.
+** A visual indicator (e.g., an arrow) should display the current sorting direction.
+
+----
+
+* *Actual Results*:
+** Column headers are not clickable.
+** No sorting functionality is implemented."
+Bug,(Sp20): Export Button in Manage Companies List View Fails to Export,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T11:56:00.000Z,2024-12-19T11:56:00.000Z,"* *Title*: Export Button in Manage Companies List View Does Not Export Data
+
+----
+
+* *Description*:
+The *Export* button in the Manage Companies list view fails to generate and download any export file (PDF or Excel). Clicking the button does not initiate any export process, leaving users unable to retrieve data in these formats.
+
+----
+
+* *Preconditions*:
+** The user is logged in and has access to the Manage Companies module.
+** The list view contains data.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the Manage Companies list view.
+*# Click on the *Export* button.
+*# Select either *PDF* or *Excel* as the export format.
+*# Observe the system behavior.
+
+----
+
+* *Expected Results*:
+** The system should generate the selected export file (PDF or Excel) containing the current data displayed in the list view.
+** The file should download automatically.
+
+----
+
+* *Actual Results*:
+** Clicking the *Export* button does not generate or download any file.
+** No error messages or feedback are provided to the user."
+Bug,(SP20): Inappropriate Error Screen for Unlinked Microsoft Account Login,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T11:02:00.000Z,2024-12-19T11:03:00.000Z,"* *Title*: Inappropriate Error Screen Displayed When Logging in with Microsoft Account Not Linked to Registered Account
+
+----
+
+* *Description*:
+When a user attempts to log in with a Microsoft account that is not linked to any registered account, the system displays an inappropriate and unformatted error screen. The error message lacks clarity, user-friendliness, and professional appearance, causing confusion to the user.
+
+----
+
+* *Preconditions*:
+** The system supports login via Microsoft accounts.
+** The Microsoft account being used is not linked to any registered account in the system.
+
+----
+
+* *Steps to Reproduce*:
+*# Open the login screen.
+*# Select the *Login with Microsoft* option.
+*# Log in using a Microsoft account not linked to any registered account in the system.
+*# Observe the error screen displayed.
+
+----
+
+* *Expected Results*:
+** The system should display a clear and user-friendly error message.
+** The error message should guide the user on the next steps, such as linking the Microsoft account to an existing account or registering a new account.
+** The error screen should have a professional design consistent with the application's theme.
+
+----
+
+* *Actual Results*:
+** The system displays an inappropriate and unformatted error screen with the following message:
+
+{noformat}Auth.Web
+Home
+Privacy
+Login
+
+Error.
+An error occurred while processing your request.
+Email claim not received from: Microsoft Email not Linked to any Account{noformat}"
+Bug,(SP20): Inappropriate Error Screen for Unlinked Google Account Login,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T10:57:00.000Z,2024-12-22T17:15:00.000Z,"* *Title*: Inappropriate Error Screen Displayed When Logging in with Google Account Not Linked to Registered Account
+
+----
+
+* *Description*:
+When a user attempts to log in with a Google account that is not linked to any registered account, the system displays an inappropriate and unformatted error screen. The error message lacks clarity, user-friendliness, and professional appearance, causing confusion to the user.
+
+----
+
+* *Preconditions*:
+** The system supports login via Google accounts.
+** The Google account being used is not linked to any registered account in the system.
+
+----
+
+* *Steps to Reproduce*:
+*# Open the login screen.
+*# Select the *Login with Google* option.
+*# Log in using a Google account not linked to any registered account in the system.
+*# Observe the error screen displayed.
+
+----
+
+* *Expected Results*:
+** The system should display a clear and user-friendly error message.
+** The error message should guide the user on the next steps, such as linking the Google account to an existing account or registering a new account.
+** The error screen should have a professional design consistent with the application's theme.
+
+----
+
+* *Actual Results*:
+** The system displays an inappropriate and unformatted error screen with the following message:
+
+{noformat}Auth.Web
+Home
+Privacy
+Login
+Error.
+An error occurred while processing your request.
+Email claim not received from: Google Email not Linked to any Account
+{noformat}"
+Bug,(SP20):Design Issues in the New Login Screen of Microtec ERP,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-19T10:33:00.000Z,2024-12-19T11:03:00.000Z,"* *Title*: Design Faults in the New Login Screen of Microtec ERP
+
+----
+
+* *Description*:
+The newly implemented login screen of the Microtec ERP has several design flaws that impact the professionalism and user perception of the system. The percentage value displayed for ""Sales Growth"" is unreasonably low at *45%*, which can negatively affect user morale. Additionally, the image depicting an employee using the system features a *young boy in casual attire*, which does not align with the formal and professional tone expected for an ERP system catering to business environments.
+
+----
+
+* *Issues Identified*:
+*# *Percentage Display*:
+*#* The ""Sales Growth"" percentage is set at *45%*, which gives the impression of poor performance. This value should either reflect realistic, customizable data or be removed if irrelevant.
+*# *Image of Employee*:
+*#* The login screen features a *young boy in casual clothing*, which is unprofessional for a corporate ERP system. The image should be replaced with a representation of a professional employee in formal attire to align with the target audience and business context.
+
+----
+
+* *Preconditions*:
+*# The user is presented with the login screen of the Microtec ERP.
+*# The design elements (percentage growth, background image) are visible on the screen.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Microtec ERP Login Screen*.
+*# Observe the ""Sales Growth"" percentage displayed.
+*# Observe the image of the employee featured on the login screen.
+
+----
+
+* *Expected Result*:
+** The login screen should maintain a *professional and motivating appearance* with:
+*** An appropriate sales growth percentage or no percentage if not required.
+*** A formal image of an employee in professional attire.
+
+----
+
+* *Actual Result*:
+** The ""Sales Growth"" percentage is set at a low and discouraging value of *45%*.
+** The featured employee image is unprofessional, showing a young boy in casual clothing."
+Bug,(Sp20): Missing Navigation Link to Manage Companies List View in Edit Company Menu,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-18T14:53:00.000Z,2024-12-18T14:54:00.000Z,"* *Title*: Missing Navigation Link to Manage Companies List View in Edit Company Menu
+
+----
+
+* *Description*:
+The *Edit Company* screen does not include a menu link or navigation option to return to the *Manage Companies* list view. This omission forces users to rely on alternative, indirect methods to navigate back to the list, negatively impacting user experience and workflow efficiency.
+
+----
+
+* *Preconditions*:
+*# The user is logged into the application.
+*# The *Edit Company* screen is accessible through the *Manage Companies* module.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to the *Manage Companies* list view.
+*# Select a company and proceed to the *Edit Company* screen.
+*# Look for a menu link or button that allows navigation back to the *Manage Companies* list view.
+
+----
+
+* *Expected Result*:
+** The *Edit Company* screen should include a menu link, button, or breadcrumb trail that enables users to navigate directly back to the *Manage Companies* list view.
+
+----
+
+* *Actual Result*:
+** No link, button, or navigation option is present in the *Edit Company* menu to return to the *Manage Companies* list view."
+Bug,"(SP20) Add Company Screen: Missing Required Validation for ""Country"" and ""Currency"" Drop-Down Fields",Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-18T12:50:00.000Z,2024-12-18T12:50:00.000Z,"* *Title*: Missing Validation for ""Country"" and ""Currency"" Fields in Add/Edit Forms
+
+----
+
+* *Description*:
+The ""Country"" and ""Currency"" drop-down fields in the *Add/Edit* forms lack required validation. When these fields are left blank and the user attempts to save the form, no validation message is displayed, and the system allows saving invalid or incomplete data.
+
+----
+
+* *Preconditions*:
+*# Access to the relevant *Add/Edit* form of Company where ""Country"" and ""Currency"" fields are present.
+*# User permissions to add or edit records.
+
+----
+
+* *Steps to Reproduce*:
+*# Navigate to Company Management of an existing subdomain
+*# click to the *Add new Button*
+*# Leave the ""Country"" and ""Currency"" fields blank.
+*# Click the *Save* button.
+
+----
+
+* *Expected Result*:
+** The system should display a clear validation message for the ""Country"" and ""Currency"" fields, such as:
+{{""Country is a required field.""}}
+{{""Currency is a required field.""}}
+** The system should prevent saving the form until these fields are filled.
+
+----
+
+* *Actual Result*:
+** No validation message is displayed.
+** The system allows saving the form with empty ""Country"" and ""Currency"" fields.
+
+----
+
+----
+
+* *Severity*: High
+* *Priority*: Medium"
+Bug,(SP19): Incorrect Total Balance Calculation in Customer Opening Balance Edit Screen,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-10T13:50:00.000Z,2025-02-17T17:35:00.000Z,"* *Title*: Incorrect Total Balance Calculation in Customer Opening Balance Edit Screen
+* *Description*: The total balance calculation in the *Customer Opening Balance Edit Screen* is incorrect. Instead of subtracting the *Credit Balance* from the *Debit Balance* for all lines, the system sums all balances, resulting in an inaccurate total.
+* *Preconditions*:
+*# A *Customer Opening Balance* record exists in the system with multiple debit and credit transactions.
+*# The transactions are properly linked to a customer and have defined debit and credit amounts.
+* *Steps*:
+*# Navigate to the *Customer Opening Balance Edit Screen*.
+*# Locate the total balance calculation section.
+*# Observe the total balance displayed.
+*# Manually calculate the expected total by subtracting the *Credit Balance* from the *Debit Balance* across all lines.
+*# Compare the systems displayed total with the manual calculation.
+* *Expected Result*:
+** The total balance should be accurately calculated as the sum of all *Debit Balances* minus the sum of all *Credit Balances* across all transactions.
+* *Actual Result*:
+** The total balance displayed in the *Customer Opening Balance Edit Screen* is incorrect, as the system sums all balances instead of subtracting credits from debits.
+* *Severity*: High
+* *Priority*: High"
+Bug,(SP19):  Incorrect Total Balance Calculation in Customer Opening Balance View Screen,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-10T13:45:00.000Z,2025-02-17T17:38:00.000Z,"* *Title*: Incorrect Total Balance Calculation in Customer Opening Balance View Screen
+* *Description*: The total balance calculation in the *Customer Opening Balance View Screen* is incorrect. The system does not properly subtract the *Debit Balance* from the *Credit Balance* across all lines, which leads to an inaccurate total balance display.
+* *Preconditions*:
+*# A *Customer Opening Balance* record exists in the system with multiple debit and credit transactions.
+*# The transactions are properly linked to a customer and have defined debit and credit amounts.
+* *Steps*:
+*# Navigate to the *Customer Opening Balance View Screen*.
+*# Identify the total balance calculation section.
+*# Observe the *Total* balance displayed.
+*# Compare the *Total* balance with the expected calculation which should be the sum of all *Debit Balances* minus the sum of all *Credit Balances* across the listed transactions.
+* *Expected Result*:
+** The *Total* balance should be accurately calculated as the sum of all *Debit Balances* minus the sum of all *Credit Balances* across all transactions.
+* *Actual Result*:
+** The *Total* balance displayed in the *Customer Opening Balance View Screen* is incorrect, showing discrepancies when compared to the expected calculation based on transaction details.
+* *Severity*: High
+* *Priority*: High"
+Bug,(SP19): Customer Code Dropdown Displays Incorrect Data in Customer Definition Opening Balance Add Screen,Mohamed Magdy,Muhammed Saeed,3,Testing,2024-12-10T12:49:00.000Z,2025-01-12T13:13:00.000Z,"* *Title*: Customer Code Dropdown Displays Incorrect Data in Customer Definition Opening Balance Add Screen
+* *Description*: In the *Customer Definition Opening Balance Add Screen*, the *Customer Code* dropdown shows customer definitions that have a *Receivable Account* different from the *Selected GL Account*. This inconsistency could lead to erroneous financial data entry.
+* *Preconditions*:
+*# Multiple customer definitions exist with different *Receivable Accounts* configured.
+*# The user is in the *Customer Definition Opening Balance Add Screen* with a specific *GL Account* selected.
+* *Steps*:
+*# Navigate to the *Customer Definition Opening Balance Add Screen*.
+*# Select a *GL Account* from the dropdown.
+*# Open the *Customer Code* dropdown to view available options.
+* *Expected Result*:
+** The *Customer Code* dropdown should display only customer definitions that have a *Receivable Account* matching the *Selected GL Account*.
+* *Actual Result*:
+** The *Customer Code* dropdown displays customer definitions with *Receivable Accounts* that do not match the *Selected GL Account*, causing a mismatch.
+* *Severity*: High
+* *Priority*: Medium"
+Bug,(Sp19): Exported Data in Customer Definition List View Ignores Applied Filters or Search,AhmedSaad15,Muhammed Saeed,3,To Do,2024-12-10T11:28:00.000Z,2025-01-05T14:27:00.000Z,"* *Title*: Exported Data in Customer Definition List View Ignores Applied Filters or Search
+* *Description*: When a user applies custom filters or searches in the *Customer Definition List View* screen and then exports the data to PDF or Excel, the exported data does not reflect the applied filter or search criteria. Instead, it exports all data without any filtering.
+* *Preconditions*:
+*# The user has access to the *Customer Definition List View* screen in the *Sales App*.
+*# There are multiple customer records available.
+*# Export functionality for PDF or Excel is enabled.
+* *Steps*:
+*# Navigate to the *Customer Definition List View* screen.
+*# Apply a custom filter or perform a search (e.g., filter by *status*, *region*, or other criteria).
+*# Click the *Export to PDF* or *Export to Excel* button.
+*# Open the exported file.
+* *Expected Result*:
+** The exported file should only contain the data that matches the applied filter or search criteria.
+* *Actual Result*:
+** The exported file contains all customer data, ignoring the applied filter or search criteria."
+Bug,SP19-Stock Out: Subtotal Not Updating When Changing Cost in Stock In Add Screen,Muhammed Nabil,Hossam Saad,2,Code review,2024-12-04T14:09:00.000Z,2025-01-12T13:11:00.000Z,"h3. *Description:*
+
+In the Stock out module's ""Add"" screen, the *Subtotal* is successfully calculated the first time. However, if the user changes the cost value, the *Subtotal* does not update and remains fixed, causing inaccurate calculations.
+
+h3. *Steps to Reproduce:*
+
+# Navigate to the *Inventory App*.
+# Go to *Transactions* > *Stock Out*.
+# Click on the *Add* button to open the ""Add Stock out"" screen.
+# Fill in the required fields, including the *Cost*, and notice the *Subtotal* is calculated correctly.
+# Change the *Cost* value and observe the *Subtotal* field.
+
+h3. *Actual Result:*
+
+The *Subtotal* remains unchanged and does not reflect the updated *Cost* value.
+
+h3. *Expected Result:*
+
+The *Subtotal* should recalculate automatically whenever the *Cost* value is modified."
+Bug,(SP19):Network Error (500) on Uploading Attachment for New Employee,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-04T10:26:00.000Z,2024-12-04T12:08:00.000Z,"* *Title*: Network Error (500) on Uploading Attachment for New Employee
+* *Description*: The system fails to upload an attachment for a new employee record, resulting in a network error with status code 500.
+* *Preconditions*:
+*# User has privileges to add employee records.
+* *Steps*:
+*# Navigate to the *Employee Management* module.
+*# Open the *Add Employee* screen.
+*# Fill in the required fields.
+*# Attempt to upload an attachment.
+* *Expected Result*:
+** Attachment is successfully uploaded.
+* *Actual Result*:
+** A network error with status code 500 occurs."
+Bug,(Sp18):Payment Term and Reference Fields Display Default Text When No Values Are Provided in Purchase Invoice View,Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-02T13:15:00.000Z,2024-12-02T13:15:00.000Z,"* *Title*: Payment Term and Reference Fields Display Default Text When No Values Are Provided in Purchase Invoice View
+* *Description*: The *Payment Term* and *Reference* fields in the *Purchase Invoice - View* screen display default text even when no values are provided. These fields should remain empty or blank when no values are present.
+* *Preconditions*:
+*# The user has the necessary privileges to access the Purchase App.
+*# The *Purchase Invoice - View* screen is accessible.
+* *Steps*:
+*# Navigate to the Purchase App.
+*# Open the *Purchase Invoice - View* screen.
+*# Observe the *Payment Term* and *Reference* fields when no values are provided.
+* *Expected Result*:
+** The *Payment Term* and *Reference* fields should remain empty blank when no values are provided.
+* *Actual Result*:
+* The *Payment Term* and *Reference* fields display default text even when no values are entered."
+Bug,Sprint 19 - Purchase Invoice Screen: Missing Fields in Purchase Module,Muhammed Nabil,Tasneem Fathy,2,To Do,2024-12-02T13:10:00.000Z,2025-01-12T13:02:00.000Z,"*Description*:
+In the Purchase module, on the Purchase Invoice screen, several required fields are missing, impacting the users ability to complete and process purchase invoices. This issue affects the usability and functionality of the screen, as critical data inputs are unavailable.
+
+*Steps to Reproduce*:
+
+# Navigate to the Purchase module.
+# Open the Purchase Invoice screen.
+# Review the available fields on the screen.
+# Identify the missing fields.
+
+*Expected Result*:
+All required fields should be present on the Purchase Invoice screen to allow users to input and process data as per the modules functionality.
+
+*Actual Result*:
+Several fields are missing, preventing users from completing purchase invoices effectively."
+Bug,"(Sp18): ""Scan Barcode"" Button Not Actionable in Purchase Invoice Add Screen",Maha Muhammed,Muhammed Saeed,3,To Do,2024-12-02T12:22:00.000Z,2024-12-02T16:11:00.000Z,"* *Title*: ""Scan Barcode"" Button Not Actionable in Purchase Invoice Add Screen
+* *Description*: The ""Scan Barcode"" button in the *Purchase Invoice - Add* screen is unresponsive and does not trigger any action when clicked.
+* *Preconditions*:
+*# The user has the necessary privileges to access the Purchase App.
+*# The Purchase Invoice - Add screen is accessible.
+* *Steps*:
+*# Navigate to the Purchase App.
+*# Open the *Purchase Invoice - Add* screen.
+*# Click on the ""Scan Barcode"" button.
+* *Expected Result*:
+** The ""Scan Barcode"" button should activate the barcode scanning functionality to retrieve item details.
+* *Actual Result*:
+** The ""Scan Barcode"" button is not actionable and does not trigger any action."
